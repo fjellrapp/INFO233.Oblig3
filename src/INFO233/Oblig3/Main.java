@@ -1,5 +1,6 @@
 package INFO233.Oblig3;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -31,6 +32,14 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        createNewDatabase("oblig3v1_database.sql");
+
+        String filename = "oblig3v1_database.db";
+        File f = new File(filename);
+
+        if (f.exists()){
+            System.out.println("File already exists");
+        }else {
+            createNewDatabase(filename);
+        }
     }
 }

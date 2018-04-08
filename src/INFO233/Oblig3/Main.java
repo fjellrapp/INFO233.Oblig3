@@ -1,16 +1,6 @@
 package INFO233.Oblig3;
 
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-
+import javax.sql.rowset.CachedRowSet;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,11 +9,14 @@ import java.sql.*;
 import java.util.Scanner;
 
 
+
 public class Main{
 
-    public static void createNewDatabase(String filename) throws SQLException, FileNotFoundException {
+    private static Connection con;
 
-        String url = "jdbc:sqlite:" + filename;
+    public static void connectDatabase() throws SQLException, FileNotFoundException {
+
+        String url = "jdbc:sqlite:oblig3v1_database.db";
         Connection con = null;
         try {
             con = DriverManager.getConnection(url);
@@ -40,6 +33,16 @@ public class Main{
         InputStream input = new FileInputStream(schema);
         importSQL(con, input);
 
+    }
+
+    public static void disconnectDatabase() throws SQLException{
+        if (con != null && !con.isClosed()){
+            try{
+                con.close();
+            }catch(SQLException e){
+                throw e;
+            }
+        }
     }
 
     public static void importSQL(Connection conn, InputStream input) throws SQLException{
@@ -77,9 +80,39 @@ public class Main{
         if (f.isFile()){
             System.out.println("File already exists");
         }else {
-            createNewDatabase(filename);
+            connectDatabase();
         }
     }
+
+    public Connection getConnection(){
+        return con;
+    }
+
+    public void queryInvoice() throws SQLException{
+
+    String invoiceQuery =
+            "SELECT customer_name, billing_account, street_number, street_name, postal_code, postal_town, dato, product_name, description, price " +
+            "FROM customer, address, category, invoice, invoice_items, product;";
+
+    Statement getStatement = con.createStatement();
+    ResultSet rs = getStatement.executeQuery(invoiceQuery);
+    while(rs.next()){
+        System.out.println(rs.getString(1));
+    }
+    }
+
+    public static ResultSet execQuery(String query) throws SQLException{
+        Statement stmnt = null;
+        ResultSet rs = null;
+        CachedRowSet s = null;
+
+
+        return null;
+
+    }
+
+
+
 
 
 

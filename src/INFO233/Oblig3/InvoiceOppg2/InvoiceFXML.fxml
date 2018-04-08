@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="INFO233.Oblig3.InvoiceOppg2.InvoiceController"
+          prefHeight="400.0" prefWidth="600.0">
+
+
+    <Text text="Faktura" id="faktura-tittel"/>
+
+    <VBox>
+        <Text text="navn" id="navn"/>
+        <Text text="Addresse" id="addresse"/>
+        <Text text="Poststed/Nr" id="poststed"/>
+    </VBox>
+
+    <HBox>
+        <Text text="Faktura gjelde fra "/>
+    </HBox>
+
+    <VBox id="vbox">
+        <HBox id="hbox-TOP">
+            <Text text="Faktura nr: " id="fakturaNr"/>
+            <Text text="Beskrivelse" id="beskrivelse"/>
+        </HBox>
+        <HBox id="hbox-Content">
+            <Text text="Her kommer tall" id="content_fakturanr"/>
+            <Text text="her komme beskrivelse av faktura" id="content_info"/>
+        </HBox>
+    </VBox>
+
+
+</GridPane>

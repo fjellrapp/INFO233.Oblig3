@@ -44,7 +44,8 @@ public class CustomerDAOImpl {
         try{
             Statement statement = conn.createStatement();
             statement.setQueryTimeout(20);
-            statement.executeQuery("DELETE FROM customer WHERE customer_id = " + id);
+            PreparedStatement preparedStatement = conn.prepareStatement("DELETE FROM customer WHERE customer_id = " + id +";");
+            preparedStatement.execute();
         }catch (SQLException e){
             e.printStackTrace();
         }finally {

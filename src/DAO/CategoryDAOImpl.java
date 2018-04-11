@@ -55,8 +55,8 @@ public class CategoryDAOImpl {
         try{
             Statement statement = con.createStatement();
             statement.setQueryTimeout(20);
-            statement.executeQuery("" +
-                    "DELETE FROM category WHERE id = " + id + ";");
+            PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM category WHERE id = " + id + ";");
+            preparedStatement.execute();
         }catch (SQLException e){
             e.printStackTrace();
         }finally {

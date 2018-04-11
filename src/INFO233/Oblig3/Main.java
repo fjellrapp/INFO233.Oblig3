@@ -1,6 +1,7 @@
 package INFO233.Oblig3;
 
 import DAO.AddressDAOImpl;
+import Entities.Address;
 import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 import INFO233.Oblig3.SQLConnector.SQLSchemaReader;
 
@@ -16,11 +17,8 @@ public class Main {
 
     public static void main(String args[])  {
 
-
-
-
-
-
+        AddressDAOImpl address =  new AddressDAOImpl();
+        address.deleteAddress(2);
 
     }
 }

@@ -62,8 +62,9 @@ public class AddressDAOImpl {
             Connection con = connector.connect();
             try {
                 Statement statement = con.createStatement();
-                statement.setQueryTimeout(20);
-                statement.executeQuery("DELETE FROM address WHERE address_id = " + id);
+                statement.setQueryTimeout(30);
+                PreparedStatement prepStatement = con.prepareStatement("DELETE FROM address WHERE address_id = " + id + ";");
+                prepStatement.execute();
             }catch (SQLException e){
                 e.printStackTrace();
             }finally {

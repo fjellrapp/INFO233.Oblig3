@@ -8,6 +8,18 @@ public class Address {
     private String postalCode;
     private String postalTown;
 
+    public Address(int addressId, String streetNumber, String streetName, String postalCode, String postalTown) {
+        this.addressId = addressId;
+        this.streetNumber = streetNumber;
+        this.streetName = streetName;
+        this.postalCode = postalCode;
+        this.postalTown = postalTown;
+    }
+
+    public Address(){
+
+    }
+
     public int getAddressId() {
         return addressId;
     }

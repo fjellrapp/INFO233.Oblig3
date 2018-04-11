@@ -12,6 +12,13 @@ import java.util.Scanner;
 public class SQLSchemaReader {
 
 
+    /** Tar inn en kobling og et schema. Går deretter gjennom schemafilen og utfører
+     * spørringene.
+     *
+     * @param connection koblingen som skal inn
+     * @param file schema-filen som skal inn
+     */
+
     public static void intitializeDB(Connection connection, File file) {
 
         InputStream fileIn = null;
@@ -46,9 +53,10 @@ public class SQLSchemaReader {
         }
 
 
-
-
-
+    /**
+     * Sjekker om filen allerede eksisterer.
+     * @return true eller false
+     */
     public static Boolean fileExists(){
         File file = new File("oblig3v1_database.db");
         if (file.exists() && !file.isDirectory()){

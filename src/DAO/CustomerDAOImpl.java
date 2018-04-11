@@ -3,19 +3,14 @@ package DAO;
 import Entities.Customer;
 import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 
-
-import java.io.FileNotFoundException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class CustomerDAOImpl {
 
     private static SQLConnectorFactory connector = new SQLConnectorFactory();
 
 
-    public Customer accessCustomer(int id) throws SQLException, FileNotFoundException {
+    public Customer accessCustomer(int id) {
 
         Connection con = connector.connect();
         Customer customer = new Customer();
@@ -37,10 +32,50 @@ public class CustomerDAOImpl {
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }finally {
-            con.close();
+            connector.disconnect();
         }
-
         return customer;
-
     }
+
+    public void deleteCustomer(int id){
+
+        Connection conn = connector.connect();
+
+        try{
+            Statement statement = conn.createStatement();
+            statement.setQueryTimeout(20);
+            statement.executeQuery("DELETE FROM customer WHERE customer_id = " + id);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            connector.disconnect();
+        }
+    }
+
+    public void addCustomer(Customer customer){
+
+        Connection conn = connector.connect();
+
+        try{
+            Statement statement = conn.createStatement();
+            statement.setQueryTimeout(20);
+
+            PreparedStatement prepStatement = conn.prepareStatement("INSERT INTO customer (customer_id, customer_name, address, phone_number, billing_account) " +
+                    "VALUES (?,?,?,?,?);");
+            prepStatement.setInt(1, customer.getCustomerId());
+            prepStatement.setString(2, customer.getCustomerName());
+            prepStatement.setInt(3, customer.getAddress());
+            prepStatement.setString(4, customer.getPhoneNumber());
+            prepStatement.setString(5, customer.getBillingAccount());
+            prepStatement.execute();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            connector.disconnect();
+        }
+    }
+
+
+
+
 }

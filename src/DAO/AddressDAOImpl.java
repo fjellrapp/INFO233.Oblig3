@@ -30,7 +30,7 @@ public class AddressDAOImpl {
             }catch (SQLException e){
             System.out.println("Something went wrong. Message: " + e.getMessage());
         }finally {
-            connector.closeConnection();
+            connector.disconnect();
         }
         return address;
 
@@ -53,8 +53,23 @@ public class AddressDAOImpl {
             }catch (SQLException e){
                 e.printStackTrace();
             }finally {
-                connector.closeConnection();
+                connector.disconnect();
             }
+        }
+
+        public void deleteAddress(int id){
+
+            Connection con = connector.connect();
+            try {
+                Statement statement = con.createStatement();
+                statement.setQueryTimeout(20);
+                statement.executeQuery("DELETE FROM address WHERE address_id = " + id);
+            }catch (SQLException e){
+                e.printStackTrace();
+            }finally {
+                connector.disconnect();
+            }
+
         }
 
 

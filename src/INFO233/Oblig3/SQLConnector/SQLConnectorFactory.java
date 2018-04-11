@@ -43,7 +43,7 @@ public class SQLConnectorFactory {
     }
 
 
-    public void closeConnection() {
+    public void disconnect() {
         if (connection != null) {
             try {
                 connection.close();

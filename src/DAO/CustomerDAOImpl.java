@@ -20,13 +20,11 @@ public class CustomerDAOImpl {
             ResultSet custResults = stmnt.executeQuery("SELECT * FROM customer" +
                     "WHERE " + id);
             if (custResults.next()){
-
                 customer.setCustomerId(custResults.getInt("customer_id"));
                 customer.setCustomerName(custResults.getString("customer_name"));
                 customer.setAddress(custResults.getInt("address"));
                 customer.setPhoneNumber(custResults.getString("phone_number"));
                 customer.setBillingAccount(custResults.getString("billing_account"));
-
             }
 
         }catch (SQLException e){

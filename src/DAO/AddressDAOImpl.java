@@ -17,7 +17,7 @@ public class AddressDAOImpl {
 
     public Address accessAddress(int id) {
 
-        Connection con = connector.getConnection();
+        Connection con = connector.connect();
         Address address = new Address();
 
         try{

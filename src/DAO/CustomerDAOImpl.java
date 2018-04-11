@@ -17,7 +17,7 @@ public class CustomerDAOImpl {
 
     public Customer accessCustomer(int id) throws SQLException, FileNotFoundException {
 
-        Connection con = connector.getConnection();
+        Connection con = connector.connect();
         Customer customer = new Customer();
 
         try{

@@ -6,10 +6,11 @@ import java.sql.*;
 public class SQLConnectorFactory {
 
     private static File schema = new File("oblig3v1_database.sql");
+    private static Connection connection = null;
 
-    public Connection getConnection(){
+    public Connection connect(){
 
-        Connection connection = null;
+
         String url = "jdbc:sqlite:oblig3v1_database.db";
 
         if (SQLSchemaReader.fileExists()) {
@@ -19,6 +20,7 @@ public class SQLConnectorFactory {
                 if (connection != null) {
                     DatabaseMetaData meta = connection.getMetaData();
                     System.out.println("Navn på driver: " + meta.getDriverName());
+
                 }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
@@ -42,19 +44,24 @@ public class SQLConnectorFactory {
 
 
     public void disconnectDatabase() {
-        if (getConnection() != null) {
+        if (connection != null) {
             try {
-                getConnection().close();
+                connection.close();
+                connection = null;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
     }
-    /*
-    private void setSchema(Connection conn){
-            SQLSchemaReader.intitializeDB(conn, schema);
+
+    public boolean isConnected(){
+        if (connection != null){
+            return true;
+        }else{
+            return false;
+        }
     }
-    */
+
 
     }
 

@@ -1,25 +1,25 @@
 package INFO233.Oblig3;
 
-import INFO233.Oblig3.SQLConnector.SQLConnector;
+import DAO.AddressDAOImpl;
+import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
+import INFO233.Oblig3.SQLConnector.SQLSchemaReader;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Main {
 
-    public static void main(String args[]) throws SQLException, FileNotFoundException {
+    private static SQLConnectorFactory connector = new SQLConnectorFactory();
 
-        SQLConnector connector = new SQLConnector();
+    public static void main(String args[])  {
 
-        String filename = "oblig3v1_database.db";
-        File f = new File(filename);
 
-        if (f.isFile()){
-            System.out.println("File already exists");
-        }else {
-            connector.connectDatabase();
-        }
+       connector.getConnection();
+
+
 
     }
 }

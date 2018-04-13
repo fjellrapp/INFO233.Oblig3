@@ -4,27 +4,49 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.text.Text?>
-<GridPane xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          fx:controller="INFO233.Oblig3.InvoiceOppg2.InvoiceController"
-          prefHeight="800.0" prefWidth="400.0" alignment="CENTER">
+<?import javafx.scene.text.TextFlow?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="INFO233.Oblig3.InvoiceOppg2.InvoiceController"
+           prefHeight="800.0" prefWidth="400.0" alignment="CENTER">
 
 
-    <VBox alignment="CENTER" spacing="130.0">
-    <Label text="Faktura" id="faktura-tittel" alignment="TOP_CENTER" layoutX="200" layoutY="750"/>
+    <VBox alignment="CENTER" spacing="110.0">
+    <Label text="Faktura" id="faktura-tittel" alignment="TOP_CENTER" layoutX="200" layoutY="750"
+    style=" -fx-font-size: 30px;
+    -fx-text-alignment: center;"/>
 
-        <HBox spacing="40.0">
+        <HBox spacing="20.0" alignment="CENTER">
     <VBox alignment="TOP_RIGHT">
-        <Label text="Navn: " id="navn" fx:id="displayName"/>
-        <Text text="Addresse: " id="addresse" fx:id="displayAddress"/>
-        <Text text="Postnummer: " id="postnummer"/>
-        <Text text="Poststed: " id="poststed"/>
-        <Text text="Faktura nr: " id="fakturaNr"/>
+        <children>
+
+        <Label text="Navn: " id="navn" style="-fx-text-fill: black"/>
+        <Label text="Addresse: " id="addresse" fx:id="fxAddressId"/>
+        <Label text="Poststed/nummer: " id="postnummer" fx:id="postalcodeId"/>
+        <Label text="Faktura nr: " id="fakturaNr" fx:id="invoiceNoId"/>
+        </children>
+    </VBox>
+
+    <VBox>
+        <children>
+            <Text fx:id="navnId" style="-fx-font-weight: bold"/>
+            <Text fx:id="addresseId"/>
+            <Text fx:id="postId"/>
+            <Text fx:id="fakuturaid"/>
+        </children>
     </VBox>
 
     <VBox alignment="TOP_LEFT">
+        <children>
         <Text text="Faktura gjelder fra perioden: "/>
+        </children>
     </VBox>
+
+       <VBox>
+           <children>
+               <Text fx:id="datoid"/>
+           </children>
+       </VBox>
         </HBox>
 
     <VBox id="vbox">
@@ -32,10 +54,11 @@
             <HBox>
                <Text fx:id="showInvoiceNo"/>
             </HBox>
-            <Text text="Beskrivelse" id="beskrivelse"/>
+
         </HBox>
-        <HBox id="hbox-Content">
+        <HBox id="hbox-Content" alignment="CENTER">
             <VBox>
+                <Text text="Beskrivelse" id="beskrivelse"/>
             <Text text="Her kommer tall" id="content_fakturanr"/>
             <Text text="her komme beskrivelse av faktura" id="content_info"/>
             </VBox>
@@ -44,4 +67,4 @@
     </VBox>
 
 
-</GridPane>
+</StackPane>

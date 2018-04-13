@@ -14,12 +14,12 @@ public class SQLConnectorFactory {
         String url = "jdbc:sqlite:oblig3v1_database.db";
 
         if (SQLSchemaReader.fileExists()) {
-            System.out.println("File already existed. Connecting..");
+            System.out.println("Connecting..");
             try {
                 connection = DriverManager.getConnection(url);
                 if (connection != null) {
                     DatabaseMetaData meta = connection.getMetaData();
-                    System.out.println("Navn på driver: " + meta.getDriverName());
+                    System.out.println("Driver: " + meta.getDriverName());
 
                 }
             } catch (SQLException e) {

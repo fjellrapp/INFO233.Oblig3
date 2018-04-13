@@ -4,10 +4,38 @@ import Entities.Invoice;
 import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class InvoiceDAOImpl {
 
     private SQLConnectorFactory connector = new SQLConnectorFactory();
+
+    private List<Invoice> getAllInvoices(){
+        Invoice invoice = new Invoice();
+        Connection conn = connector.connect();
+        List<Invoice> all = new ArrayList<>();
+
+        String query = "SELECT * FROM Invoice;";
+
+        try{
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while(resultSet.next()){
+
+                invoice.setInvoiceId(resultSet.getInt("invoice_id"));
+                invoice.setDato(resultSet.getString("dato"));
+                invoice.setCustomer(resultSet.getInt("customer"));
+                all.add(invoice);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            connector.disconnect();
+        }
+        return all;
+    }
 
     public Invoice accessInvoice(int id){
         Connection conn = connector.connect();

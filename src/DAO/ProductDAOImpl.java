@@ -1,9 +1,12 @@
 package DAO;
 
+import Entities.InvoiceItems;
 import Entities.Product;
 import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProductDAOImpl {
@@ -73,6 +76,33 @@ public class ProductDAOImpl {
         }finally {
             connector.disconnect();
         }
+
+    }
+
+    private List<Product> getAllAddresses(){
+        Product product = new Product();
+        Connection conn = connector.connect();
+        List<Product> all = new ArrayList<>();
+
+        String query = "SELECT * FROM invoice_items;";
+
+        try{
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while(resultSet.next()){
+                product.setProductId(resultSet.getInt("product_id"));
+                product.setProductName(resultSet.getString("product_name"));
+                product.setDescription(resultSet.getString("description"));
+                product.setPrice(resultSet.getFloat("price"));
+                product.setCategory(resultSet.getInt("category"));
+                all.add(product);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            connector.disconnect();
+        }
+        return all;
     }
 
 }

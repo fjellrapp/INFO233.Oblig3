@@ -1,11 +1,14 @@
 package DAO;
 
+import Entities.Address;
 import Entities.Category;
 import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 
 
 import javax.swing.plaf.nimbus.State;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryDAOImpl {
 
@@ -62,5 +65,28 @@ public class CategoryDAOImpl {
         }finally {
             connector.disconnect();
         }
+    }
+
+    private List<Category> getAllAddresses(){
+        Category category = new Category();
+        Connection conn = connector.connect();
+        List<Category> all = new ArrayList<>();
+
+        String query = "SELECT * FROM category;";
+
+        try{
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while(resultSet.next()){
+                category.setCategoryId(resultSet.getInt("category_id"));
+                category.setCategoryName(resultSet.getString("category_name"));
+                all.add(category);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            connector.disconnect();
+        }
+        return all;
     }
 }

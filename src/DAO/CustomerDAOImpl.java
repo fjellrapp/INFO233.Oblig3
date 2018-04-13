@@ -1,9 +1,12 @@
 package DAO;
 
+import Entities.Category;
 import Entities.Customer;
 import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerDAOImpl {
 
@@ -72,6 +75,32 @@ public class CustomerDAOImpl {
         }finally {
             connector.disconnect();
         }
+    }
+
+    private List<Customer> getAllAddresses(){
+        Customer customer = new Customer();
+        Connection conn = connector.connect();
+        List<Customer> all = new ArrayList<>();
+
+        String query = "SELECT * FROM customer;";
+
+        try{
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while(resultSet.next()){
+                customer.setCustomerId(resultSet.getInt("customer_id"));
+                customer.setCustomerName(resultSet.getString("customer_name"));
+                customer.setAddress(resultSet.getInt("address"));
+                customer.setPhoneNumber(resultSet.getString("phone_number"));
+                customer.setBillingAccount(resultSet.getString("billing_account"));
+                all.add(customer);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            connector.disconnect();
+        }
+        return all;
     }
 
 

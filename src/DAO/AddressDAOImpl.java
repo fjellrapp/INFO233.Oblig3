@@ -1,9 +1,12 @@
 package DAO;
 
 import Entities.Address;
+import Entities.Invoice;
 import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class AddressDAOImpl {
@@ -72,6 +75,32 @@ public class AddressDAOImpl {
             }
 
         }
+
+    private List<Address> getAllAddresses(){
+        Address address = new Address();
+        Connection conn = connector.connect();
+        List<Address> all = new ArrayList<>();
+
+        String query = "SELECT * FROM address;";
+
+        try{
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while(resultSet.next()){
+                address.setAddressId(resultSet.getInt("address_id"));
+                address.setStreetNumber(resultSet.getString("street_number"));
+                address.setStreetName(resultSet.getString("street_name"));
+                address.setPostalCode(resultSet.getString("postal_code"));
+                address.setPostalTown(resultSet.getString("postal_town"));
+                all.add(address);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            connector.disconnect();
+        }
+        return all;
+    }
 
 
 

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -10,30 +7,40 @@
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="INFO233.Oblig3.InvoiceOppg2.InvoiceController"
-          prefHeight="400.0" prefWidth="600.0">
+          prefHeight="800.0" prefWidth="400.0" alignment="CENTER">
 
 
-    <Text text="Faktura" id="faktura-tittel"/>
+    <VBox alignment="CENTER" spacing="130.0">
+    <Label text="Faktura" id="faktura-tittel" alignment="TOP_CENTER" layoutX="200" layoutY="750"/>
 
-    <VBox>
-        <Text text="navn" id="navn"/>
-        <Text text="Addresse" id="addresse"/>
-        <Text text="Poststed/Nr" id="poststed"/>
+        <HBox spacing="40.0">
+    <VBox alignment="TOP_RIGHT">
+        <Label text="Navn: " id="navn" fx:id="displayName"/>
+        <Text text="Addresse: " id="addresse" fx:id="displayAddress"/>
+        <Text text="Postnummer: " id="postnummer"/>
+        <Text text="Poststed: " id="poststed"/>
+        <Text text="Faktura nr: " id="fakturaNr"/>
     </VBox>
 
-    <HBox>
-        <Text text="Faktura gjelde fra "/>
-    </HBox>
+    <VBox alignment="TOP_LEFT">
+        <Text text="Faktura gjelder fra perioden: "/>
+    </VBox>
+        </HBox>
 
     <VBox id="vbox">
         <HBox id="hbox-TOP">
-            <Text text="Faktura nr: " id="fakturaNr"/>
+            <HBox>
+               <Text fx:id="showInvoiceNo"/>
+            </HBox>
             <Text text="Beskrivelse" id="beskrivelse"/>
         </HBox>
         <HBox id="hbox-Content">
+            <VBox>
             <Text text="Her kommer tall" id="content_fakturanr"/>
             <Text text="her komme beskrivelse av faktura" id="content_info"/>
+            </VBox>
         </HBox>
+    </VBox>
     </VBox>
 
 

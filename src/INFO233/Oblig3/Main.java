@@ -1,6 +1,7 @@
 package INFO233.Oblig3;
 
 import DAO.AddressDAOImpl;
+import DAO.CustomerDAOImpl;
 import Entities.Address;
 import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 import INFO233.Oblig3.SQLConnector.SQLSchemaReader;
@@ -13,12 +14,14 @@ import java.sql.SQLException;
 
 public class Main {
 
-    private static SQLConnectorFactory connector = new SQLConnectorFactory();
-
     public static void main(String args[])  {
 
-        AddressDAOImpl address =  new AddressDAOImpl();
-        address.deleteAddress(2);
+        CustomerDAOImpl customer = new CustomerDAOImpl();
+        System.out.println(customer.accessCustomer(1).getCustomerName());
+
+        AddressDAOImpl address = new AddressDAOImpl();
+        System.out.println(address.accessAddress(1).getStreetName());
+
 
     }
 }

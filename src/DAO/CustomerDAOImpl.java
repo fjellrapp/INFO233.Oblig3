@@ -17,8 +17,8 @@ public class CustomerDAOImpl {
 
         try{
             Statement stmnt = con.createStatement();
-            ResultSet custResults = stmnt.executeQuery("SELECT * FROM customer" +
-                    "WHERE " + id);
+            ResultSet custResults = stmnt.executeQuery("SELECT * FROM customer " +
+                    "WHERE " + id +";");
             if (custResults.next()){
                 customer.setCustomerId(custResults.getInt("customer_id"));
                 customer.setCustomerName(custResults.getString("customer_name"));

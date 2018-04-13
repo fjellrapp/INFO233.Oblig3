@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -16,11 +17,9 @@ public class InvoiceMain extends Application {
         FXMLLoader fxmlloader = new FXMLLoader(InvoiceMain.class.getResource("InvoiceFXML.fxml"));
         GridPane rootLayout = fxmlloader.load();
 
-        Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
-
       //  Parent root = FXMLLoader.load(getClass().getResource("INFO233/Oblig3/InvoiceOppg2/InvoiceFXML.fxml"));
         primaryStage.setTitle("Faktura");
-        Scene scene = new Scene(rootLayout, visualBounds.getWidth(), visualBounds.getHeight());
+        Scene scene = new Scene(rootLayout, 620, 1280);
         scene.getStylesheets().add(getClass().getResource("Styles.css").toExternalForm());
         primaryStage.setScene(scene);
 

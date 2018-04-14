@@ -67,17 +67,16 @@ public class InvoiceController implements Initializable {
                 Text itemPrice = new Text(String.valueOf(product.getPrice()));
                 Text itemDescription = new Text(product.getDescription());
 
-                sumItems += product.getPrice();
                 type.getChildren().add(itemName);
                 pris.getChildren().add(itemPrice);
                 pbeskrivelse.getChildren().add(itemDescription);
 
-
+            sumItems += product.getPrice();
         }
         sumid.setText(String.valueOf(sumItems));
     }
 
-        public void displayInfo ( int index){
+        public void displayInfo (int index){
             currentIndex = index;
             insertInfoFromDb(invoiceList.get(index));
         }

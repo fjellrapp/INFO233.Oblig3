@@ -8,6 +8,18 @@ public class Product {
     private float price;
     private int category;
 
+    public Product(int productId, String productName, String description, float price, int category) {
+        this.productId = productId;
+        this.productName = productName;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+    }
+
+    public Product(){
+
+    }
+
     public int getProductId() {
         return productId;
     }

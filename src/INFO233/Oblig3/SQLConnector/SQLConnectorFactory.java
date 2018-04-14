@@ -1,5 +1,7 @@
 package INFO233.Oblig3.SQLConnector;
 
+
+
 import java.io.File;
 import java.sql.*;
 
@@ -17,29 +19,25 @@ public class SQLConnectorFactory {
             System.out.println("Connecting..");
             try {
                 connection = DriverManager.getConnection(url);
-                if (connection != null) {
-                    DatabaseMetaData meta = connection.getMetaData();
-                    System.out.println("Driver: " + meta.getDriverName());
-
-                }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
-        }else{
+        }else {
             try {
                 System.out.println("File didn't exists. Creating it from schema.");
                 connection = DriverManager.getConnection(url);
                 SQLSchemaReader.intitializeDB(connection, schema);
-                if (connection != null){
-                    DatabaseMetaData meta = connection.getMetaData();
-                    System.out.println("Navn på driver " + meta.getDriverName());
-                }
-            }catch (SQLException b){
+            } catch (SQLException b) {
                 b.printStackTrace();
             }
-
         }
         return connection;
+    }
+
+    public void connectionCase(){
+
+
+
     }
 
 

@@ -6,6 +6,7 @@ import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -77,9 +78,9 @@ public class AddressDAOImpl {
         }
 
     private List<Address> getAllAddresses(){
-        Address address = new Address();
+
         Connection conn = connector.connect();
-        List<Address> all = new ArrayList<>();
+        List<Address> all = new LinkedList<>();
 
         String query = "SELECT * FROM address;";
 
@@ -87,6 +88,7 @@ public class AddressDAOImpl {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while(resultSet.next()){
+                Address address = new Address();
                 address.setAddressId(resultSet.getInt("address_id"));
                 address.setStreetNumber(resultSet.getString("street_number"));
                 address.setStreetName(resultSet.getString("street_name"));

@@ -1,17 +1,10 @@
-package INFO233.Oblig3.InvoiceOppg2;
+package INFO233.Oblig3.GUI;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
-
-import java.util.Stack;
 
 public class InvoiceMain extends Application {
     @Override
@@ -20,9 +13,9 @@ public class InvoiceMain extends Application {
         FXMLLoader fxmlloader = new FXMLLoader(InvoiceMain.class.getResource("InvoiceFXML.fxml"));
         StackPane rootLayout = fxmlloader.load();
 
-      //  Parent root = FXMLLoader.load(getClass().getResource("INFO233/Oblig3/InvoiceOppg2/InvoiceFXML.fxml"));
+      //  Parent root = FXMLLoader.load(getClass().getResource("INFO233/Oblig3/GUI/InvoiceFXML.fxml"));
         primaryStage.setTitle("Faktura");
-        Scene scene = new Scene(rootLayout, 620, 1280);
+        Scene scene = new Scene(rootLayout, 720, 1280);
         primaryStage.setScene(scene);
 
         primaryStage.show();

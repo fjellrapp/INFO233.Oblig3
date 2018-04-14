@@ -6,6 +6,7 @@ import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CustomerDAOImpl {
@@ -23,6 +24,7 @@ public class CustomerDAOImpl {
             ResultSet custResults = stmnt.executeQuery("SELECT * FROM customer " +
                     "WHERE " + id +";");
             if (custResults.next()){
+
                 customer.setCustomerId(custResults.getInt("customer_id"));
                 customer.setCustomerName(custResults.getString("customer_name"));
                 customer.setAddress(custResults.getInt("address"));
@@ -78,9 +80,9 @@ public class CustomerDAOImpl {
     }
 
     private List<Customer> getAllAddresses(){
-        Customer customer = new Customer();
+
         Connection conn = connector.connect();
-        List<Customer> all = new ArrayList<>();
+        List<Customer> all = new LinkedList<>();
 
         String query = "SELECT * FROM customer;";
 
@@ -88,6 +90,7 @@ public class CustomerDAOImpl {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while(resultSet.next()){
+                Customer customer = new Customer();
                 customer.setCustomerId(resultSet.getInt("customer_id"));
                 customer.setCustomerName(resultSet.getString("customer_name"));
                 customer.setAddress(resultSet.getInt("address"));

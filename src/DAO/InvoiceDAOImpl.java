@@ -12,10 +12,10 @@ public class InvoiceDAOImpl {
 
     private SQLConnectorFactory connector = new SQLConnectorFactory();
 
-    private List<Invoice> getAllInvoices(){
-        Invoice invoice = new Invoice();
+    public List<Invoice> getAllInvoices(){
+
         Connection conn = connector.connect();
-        List<Invoice> all = new ArrayList<>();
+        List<Invoice> all = new LinkedList<>();
 
         String query = "SELECT * FROM Invoice;";
 
@@ -23,7 +23,7 @@ public class InvoiceDAOImpl {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while(resultSet.next()){
-
+                Invoice invoice = new Invoice();
                 invoice.setInvoiceId(resultSet.getInt("invoice_id"));
                 invoice.setDato(resultSet.getString("dato"));
                 invoice.setCustomer(resultSet.getInt("customer"));

@@ -8,6 +8,7 @@ import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CategoryDAOImpl {
@@ -67,10 +68,10 @@ public class CategoryDAOImpl {
         }
     }
 
-    private List<Category> getAllAddresses(){
-        Category category = new Category();
+    private List<Category> getAllCategories(){
+
         Connection conn = connector.connect();
-        List<Category> all = new ArrayList<>();
+        List<Category> all = new LinkedList<>();
 
         String query = "SELECT * FROM category;";
 
@@ -78,6 +79,7 @@ public class CategoryDAOImpl {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while(resultSet.next()){
+                Category category = new Category();
                 category.setCategoryId(resultSet.getInt("category_id"));
                 category.setCategoryName(resultSet.getString("category_name"));
                 all.add(category);

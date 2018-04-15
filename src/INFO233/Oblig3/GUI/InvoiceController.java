@@ -76,7 +76,7 @@ public class InvoiceController implements Initializable {
         sumid.setText(String.valueOf(sumItems));
     }
 
-        public void displayInfo (int index){
+        public void displayInfo(int index){
             currentIndex = index;
             insertInfoFromDb(invoiceList.get(index));
         }

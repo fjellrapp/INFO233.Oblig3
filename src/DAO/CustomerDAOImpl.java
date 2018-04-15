@@ -79,7 +79,7 @@ public class CustomerDAOImpl {
         }
     }
 
-    private List<Customer> getAllAddresses(){
+    public List<Customer> getAllCustomers(){
 
         Connection conn = connector.connect();
         List<Customer> all = new LinkedList<>();

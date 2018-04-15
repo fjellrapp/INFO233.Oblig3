@@ -36,8 +36,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         Parent root = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));
-
-        //  Parent root = FXMLLoader.load(getClass().getResource("INFO233/Oblig3/GUI/InvoiceFXML.fxml"));
         primaryStage.setTitle("Salgssystem");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

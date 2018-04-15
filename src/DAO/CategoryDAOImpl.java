@@ -68,7 +68,7 @@ public class CategoryDAOImpl {
         }
     }
 
-    private List<Category> getAllCategories(){
+    public List<Category> getAllCategories(){
 
         Connection conn = connector.connect();
         List<Category> all = new LinkedList<>();

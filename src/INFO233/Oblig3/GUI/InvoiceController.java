@@ -4,10 +4,17 @@ package INFO233.Oblig3.GUI;
 import DAO.*;
 import Entities.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -29,6 +36,12 @@ public class InvoiceController implements Initializable {
 
     @FXML
     private VBox pris, type, pbeskrivelse;
+
+    @FXML
+    private Button back, next;
+
+    @FXML
+    private Parent parent;
 
 
     @Override
@@ -80,7 +93,24 @@ public class InvoiceController implements Initializable {
             currentIndex = index;
             insertInfoFromDb(invoiceList.get(index));
         }
+
+        public void onNext(){
+
         }
+
+        public void onBack(){
+
+        try {
+            AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));
+            Scene scene = new Scene(anchor);
+            Stage stage = (Stage) parent.getScene().getWindow();
+            stage.setScene(scene);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        }
+}
 
 
 

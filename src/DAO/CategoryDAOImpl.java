@@ -18,11 +18,12 @@ public class CategoryDAOImpl {
     public Category accessCategory(int id){
         Connection conn = connector.connect();
         Category category = new Category();
+        String SQL = "SELECT * FROM category " +
+                "WHERE category_id = " + id + ";";
 
         try{
             Statement statement = conn.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM category " +
-                    "WHERE category_id = " + id + ";");
+            ResultSet result = statement.executeQuery(SQL);
 
             category.setCategoryId(result.getInt("category_id"));
             category.setCategoryName(result.getString("category_name"));
@@ -38,8 +39,6 @@ public class CategoryDAOImpl {
     public void addCategory(Category category){
         Connection con = connector.connect();
         try{
-            Statement statement = con.createStatement();
-            statement.setQueryTimeout(20);
             PreparedStatement preparedStatement = con.prepareStatement(
                     "INSERT INTO category (category_id, category_name)" +
                             "values (?, ?);"
@@ -57,8 +56,6 @@ public class CategoryDAOImpl {
     public void deleteCategory(int id){
         Connection con = connector.connect();
         try{
-            Statement statement = con.createStatement();
-            statement.setQueryTimeout(20);
             PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM category WHERE id = " + id + ";");
             preparedStatement.execute();
         }catch (SQLException e){
@@ -90,5 +87,20 @@ public class CategoryDAOImpl {
             connector.disconnect();
         }
         return all;
+    }
+
+    public void editCategory(Category category){
+        Connection conn = connector.connect();
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement("UPDATE category SET " +
+                    "category_name = ?, " +
+                    "WHERE category_id = " + category.getCategoryId() + ";");
+            preparedStatement.setString(1, category.getCategoryName());
+            preparedStatement.execute();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            connector.disconnect();
+        }
     }
 }

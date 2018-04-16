@@ -40,14 +40,14 @@ public class AddressDAOImpl {
 
         }
 
+
         public void addAddress(Address address){
             Connection conn = connector.connect();
+            String query = "INSERT INTO address (address_id, street_number, street_name, postal_code, postal_town)" +
+                    "VALUES (?,?,?,?,?);";
 
             try{
-                Statement statement = conn.createStatement();
-                statement.setQueryTimeout(10);
-                PreparedStatement prepStatement = conn.prepareStatement("INSERT INTO address (address_id, street_number, street_name, postal_code, postal_town)" +
-                        "VALUES (?,?,?,?,?);");
+                PreparedStatement prepStatement = conn.prepareStatement(query);
                 prepStatement.setInt(1, address.getAddressId());
                 prepStatement.setString(2, address.getStreetNumber());
                 prepStatement.setString(3, address.getStreetName());
@@ -65,8 +65,6 @@ public class AddressDAOImpl {
 
             Connection con = connector.connect();
             try {
-                Statement statement = con.createStatement();
-                statement.setQueryTimeout(30);
                 PreparedStatement prepStatement = con.prepareStatement("DELETE FROM address WHERE address_id = " + id + ";");
                 prepStatement.execute();
             }catch (SQLException e){
@@ -77,7 +75,7 @@ public class AddressDAOImpl {
 
         }
 
-    private List<Address> getAllAddresses(){
+    public List<Address> getAllAddresses(){
 
         Connection conn = connector.connect();
         List<Address> all = new LinkedList<>();
@@ -102,6 +100,31 @@ public class AddressDAOImpl {
             connector.disconnect();
         }
         return all;
+    }
+
+
+    public void editAddress(Address address){
+        Connection conn = connector.connect();
+        String query = "UPDATE address SET " +
+                "street_number = ?," +
+                "street_name = ?, " +
+                "postal_code = ?," +
+                "postal_town = ?," +
+                "WHERE address_id = " + address.getAddressId() + ";";
+
+        try {
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, address.getStreetNumber());
+            statement.setString(2, address.getStreetName());
+            statement.setString(3, address.getPostalCode());
+            statement.setString(4, address.getPostalTown());
+            statement.execute();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            connector.disconnect();
+        }
     }
 
 

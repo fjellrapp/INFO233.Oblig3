@@ -21,6 +21,6 @@
       </Label>
       <Button layoutX="81.0" layoutY="167.0" mnemonicParsing="false" onAction="#buttonAdd" text="Create" />
       <Button layoutX="437.0" layoutY="167.0" mnemonicParsing="false" onAction="#buttonBack" text="Back" />
-      <TextArea fx:id="systemText" editable="false" layoutX="40.0" layoutY="277.0" prefHeight="98.0" prefWidth="167.0" />
+      <TextArea fx:id="systemText" editable="false" layoutX="40.0" layoutY="277.0" prefHeight="98.0" prefWidth="167.0" wrapText="true" />
    </children>
 </AnchorPane>

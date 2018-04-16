@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="parent" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="INFO233.Oblig3.GUI.NewCustomerController">
    <children>
       <Label layoutX="51.0" layoutY="35.0" text="Insert to Customer">
@@ -42,6 +41,6 @@
       <TextField fx:id="postalcodeId" layoutX="412.0" layoutY="173.0" promptText="Insert PostalCode" />
       <TextField fx:id="postaltownid" layoutX="412.0" layoutY="213.0" promptText="Insert PostalTown" />
       <Button layoutX="496.0" layoutY="254.0" mnemonicParsing="false" onAction="#returnToMain" text="Back" />
-      <TextArea fx:id="resultArea" editable="false" layoutX="33.0" layoutY="300.0" prefHeight="77.0" prefWidth="204.0" />
+      <TextArea fx:id="resultArea" editable="false" layoutX="33.0" layoutY="300.0" prefHeight="77.0" prefWidth="204.0" wrapText="true" />
    </children>
 </AnchorPane>

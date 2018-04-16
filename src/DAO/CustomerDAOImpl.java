@@ -18,11 +18,12 @@ public class CustomerDAOImpl {
 
         Connection con = connector.connect();
         Customer customer = new Customer();
+        String SQL = "SELECT * FROM customer " +
+                "WHERE " + id +";";
 
         try{
             Statement stmnt = con.createStatement();
-            ResultSet custResults = stmnt.executeQuery("SELECT * FROM customer " +
-                    "WHERE " + id +";");
+            ResultSet custResults = stmnt.executeQuery(SQL);
             if (custResults.next()){
 
                 customer.setCustomerId(custResults.getInt("customer_id"));
@@ -45,8 +46,6 @@ public class CustomerDAOImpl {
         Connection conn = connector.connect();
 
         try{
-            Statement statement = conn.createStatement();
-            statement.setQueryTimeout(20);
             PreparedStatement preparedStatement = conn.prepareStatement("DELETE FROM customer WHERE customer_id = " + id +";");
             preparedStatement.execute();
         }catch (SQLException e){
@@ -61,8 +60,6 @@ public class CustomerDAOImpl {
         Connection conn = connector.connect();
 
         try{
-            Statement statement = conn.createStatement();
-            statement.setQueryTimeout(20);
 
             PreparedStatement prepStatement = conn.prepareStatement("INSERT INTO customer (customer_id, customer_name, address, phone_number, billing_account) " +
                     "VALUES (?,?,?,?,?);");
@@ -104,6 +101,27 @@ public class CustomerDAOImpl {
             connector.disconnect();
         }
         return all;
+    }
+
+    public void editCustomer(Customer customer){
+        Connection conn = connector.connect();
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement("UPDATE customer SET " +
+            "customer_name = ?, " +
+            "address = ?, " +
+            "phone_number = ?," +
+            "billing_account = ?," +
+            "WHERE customer_id = " + customer.getCustomerId() + ";");
+            preparedStatement.setString(1, customer.getCustomerName());
+            preparedStatement.setInt(2, customer.getAddress());
+            preparedStatement.setString(3, customer.getPhoneNumber());
+            preparedStatement.setString(4, customer.getBillingAccount());
+            preparedStatement.execute();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            connector.disconnect();
+        }
     }
 
 

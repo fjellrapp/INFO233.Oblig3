@@ -18,11 +18,11 @@ public class ProductDAOImpl {
         Connection conn = connector.connect();
         Product product = new Product();
 
+        String SQL = "SELECT * FROM product WHERE product_id = " + id + ";";
+
         try {
             Statement statment = conn.createStatement();
-            ResultSet resultSet = statment.executeQuery(
-                    "SELECT * FROM product WHERE product_id = " + id + ";"
-            );
+            ResultSet resultSet = statment.executeQuery(SQL);
             if (resultSet.next()) {
                 product.setProductId(resultSet.getInt("product_id"));
                 product.setProductName(resultSet.getString("product_name"));
@@ -42,9 +42,6 @@ public class ProductDAOImpl {
         Connection conn = connector.connect();
 
         try {
-            Statement statement = conn.createStatement();
-            statement.setQueryTimeout(20);
-
             PreparedStatement preparedStatement = conn.prepareStatement(
                     "INSERT INTO product (product_id, product_name, description, price, category) " +
                             "VALUES (?, ?, ?, ?, ?);"
@@ -66,8 +63,6 @@ public class ProductDAOImpl {
     public void deleteProduct(int id) {
         Connection conn = connector.connect();
         try {
-            Statement statement = conn.createStatement();
-            statement.setQueryTimeout(20);
             PreparedStatement preparedStatement = conn.prepareStatement(
                     "DELETE FROM product WHERE product_id = " + id + ";"
             );
@@ -107,27 +102,30 @@ public class ProductDAOImpl {
         return all;
     }
 
-    public float sumAllProducts(int index) {
-
-        float sum = 0;
+    public void editProduct(Product product){
         Connection conn = connector.connect();
-        String sql = "SELECT sum(price) FROM product, invoice_items " +
-                "WHERE invoice_items.product = invoice_items.invoice;";
-        try {
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.getResultSet();
-            sum = resultSet.getFloat("sum(price)");
+        try{
+            PreparedStatement preparedStatement = conn.prepareStatement("UPDATE product SET " +
+            "product_name = ?, "+
+            "description = ?, " +
+            "price = ?, " +
+            "category = ?, "+
+            "WHERE product_id = " + product.getProductId() + ";");
+            preparedStatement.setString(1, product.getProductName());
+            preparedStatement.setString(2, product.getDescription());
+            preparedStatement.setFloat(3, product.getPrice());
+            preparedStatement.setInt(4, product.getCategory());
             preparedStatement.execute();
-
-        } catch (SQLException e) {
+        }catch (SQLException e){
             e.printStackTrace();
-        } finally {
+        }finally {
             connector.disconnect();
         }
-        return sum;
-
     }
-}
+
+  }
+
+
 
 
 

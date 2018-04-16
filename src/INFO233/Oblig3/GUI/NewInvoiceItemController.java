@@ -39,7 +39,7 @@ public class NewInvoiceItemController {
 
     public void buttonAdd(){
         invoiceItemsDAO.addInvoiceItems(newInvoiceItem());
-        systemText.setText("Product with ProductID " + newInvoiceItem().getProduct() + "added and InvoiceID " + newInvoiceItem().getInvoice() + " added" );
+        systemText.setText("Product with ProductID " + newInvoiceItem().getProduct() + " added and InvoiceID " + newInvoiceItem().getInvoice() + " added" );
     }
 
     public void buttonBack(){

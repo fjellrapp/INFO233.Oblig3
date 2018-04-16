@@ -16,13 +16,12 @@ public class InvoiceItemsDAOImpl {
     public InvoiceItems accessInvoiceItems(int id){
         Connection conn = connector.connect();
         InvoiceItems items = new InvoiceItems();
+        String SQL = "SELECT * FROM invoice_items " +
+                "WHERE invoice = " + id + ";";
 
         try{
             Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(
-                    "SELECT * FROM invoice_items " +
-                            "WHERE invoice = " + id + ";"
-            );
+            ResultSet resultSet = statement.executeQuery(SQL);
             if (resultSet.next()){
                 items.setInvoice(resultSet.getInt("invoice"));
                 items.setProduct(resultSet.getInt("product"));
@@ -38,12 +37,12 @@ public class InvoiceItemsDAOImpl {
     public void addInvoiceItems(InvoiceItems items){
         Connection conn = connector.connect();
        try{
-           Statement statement = conn.createStatement();
-           statement.setQueryTimeout(20);
            PreparedStatement preparedStatement = conn.prepareStatement(
                    "INSERT INTO invoice_items (invoice, product) VALUES " +
                            "(?,?);"
            );
+           preparedStatement.setInt(1, items.getInvoice());
+           preparedStatement.setInt(2, items.getProduct());
            preparedStatement.execute();
        }catch (SQLException e){
            e.printStackTrace();
@@ -55,8 +54,6 @@ public class InvoiceItemsDAOImpl {
     public void deleteInvoiceItems(int id){
         Connection conn = connector.connect();
         try{
-            Statement statement = conn.createStatement();
-            statement.setQueryTimeout(20);
             PreparedStatement preparedStatement = conn.prepareStatement(
                     "DELETE FROM invoice_items WHERE invoice = " + id + ";"
             );
@@ -90,6 +87,22 @@ public class InvoiceItemsDAOImpl {
             connector.disconnect();
         }
         return all;
+    }
+
+    public void editInvoiceItems(InvoiceItems invoiceItems){
+        Connection conn = connector.connect();
+        try{
+            PreparedStatement preparedStatement = conn.prepareStatement("UPDATE invoice_items SET " +
+            "product = ?, "+
+            "WHERE invoice = " + invoiceItems.getInvoice() + ";");
+            preparedStatement.setInt(1, invoiceItems.getProduct());
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            connector.disconnect();
+        }
+
+
     }
 
 }

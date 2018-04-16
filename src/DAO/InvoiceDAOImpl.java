@@ -64,9 +64,6 @@ public class InvoiceDAOImpl {
         Connection conn = connector.connect();
 
         try{
-            Statement statement = conn.createStatement();
-            statement.setQueryTimeout(20);
-
             PreparedStatement prepStatement = conn.prepareStatement("" +
                     "INSERT INTO invoice (invoice_id, customer, dato) VALUES " +
                     "(?,?,?);");
@@ -84,11 +81,26 @@ public class InvoiceDAOImpl {
     public void deleteInvoice(int id){
         Connection conn = connector.connect();
         try{
-            Statement statement = conn.createStatement();
-            statement.setQueryTimeout(20);
             PreparedStatement preparedStatement = conn.prepareStatement(
                     "DELETE FROM invoice WHERE invoice_id = " + id + ";"
             );
+            preparedStatement.execute();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            connector.disconnect();
+        }
+    }
+
+    public void editInvoice(Invoice invoice){
+        Connection conn = connector.connect();
+        try{
+            PreparedStatement preparedStatement = conn.prepareStatement("UPDATE invoice SET " +
+            "customer = ?, " +
+            "dato = ?, " +
+            "WHERE invoice_id = " +invoice.getInvoiceId() + ";");
+            preparedStatement.setInt(1, invoice.getCustomer());
+            preparedStatement.setString(2, invoice.getDato());
             preparedStatement.execute();
         }catch (SQLException e){
             e.printStackTrace();

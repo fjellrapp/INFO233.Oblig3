@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -27,7 +28,10 @@ public class InvoiceController implements Initializable {
     ProductDAOImpl productDAO = new ProductDAOImpl();
     InvoiceItemsDAOImpl invoiceItemsDAO = new InvoiceItemsDAOImpl();
     List<Invoice> invoiceList = invoiceDAO.getAllInvoices();
-    List<InvoiceItems> invoiceItemslist = invoiceItemsDAO.getAllInvoiceItems();
+    List<InvoiceItems> invoiceItemsList = invoiceItemsDAO.getAllInvoiceItems();
+
+
+
     private int currentIndex;
 
     @FXML
@@ -37,8 +41,6 @@ public class InvoiceController implements Initializable {
     @FXML
     private VBox pris, type, pbeskrivelse;
 
-    @FXML
-    private Button back, next;
 
     @FXML
     private Parent parent;
@@ -48,7 +50,7 @@ public class InvoiceController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         currentIndex = 0;
         invoiceDAO = new InvoiceDAOImpl();
-        displayInfo(currentIndex);
+        displayInvoice(currentIndex);
 
     }
 
@@ -59,6 +61,9 @@ public class InvoiceController implements Initializable {
         Address address = addressDAO.accessAddress(invoices.getCustomer());
         Invoice invoice = invoiceDAO.accessInvoice(invoices.getCustomer());
 
+        ArrayList<InvoiceItems> items = invoiceItemsDAO.accessInvoiceItems(invoice.getInvoiceId());
+
+
         navnId.setText(customer.getCustomerName());
         addresseId.setText(address.getStreetName() + " " + address.getStreetNumber());
         postId.setText(address.getPostalCode() + " " + address.getPostalTown());
@@ -67,14 +72,16 @@ public class InvoiceController implements Initializable {
         telefonid.setText(customer.getPhoneNumber());
         billingid.setText(customer.getBillingAccount());
 
-        itemsDisplay();
+        itemsDisplay(items);
 
 
     }
 
-     private void itemsDisplay(){
+     private void itemsDisplay(ArrayList<InvoiceItems> items){
+
         float sumItems = 0;
-        for (InvoiceItems item : invoiceItemslist) {
+
+            for (InvoiceItems item : items) {
                 Product product = productDAO.accessProduct(item.getProduct());
                 Text itemName = new Text(product.getProductName());
                 Text itemPrice = new Text(String.valueOf(product.getPrice()));
@@ -84,19 +91,26 @@ public class InvoiceController implements Initializable {
                 pris.getChildren().add(itemPrice);
                 pbeskrivelse.getChildren().add(itemDescription);
 
-            sumItems += product.getPrice();
+                sumItems += product.getPrice();
+            }
+            sumid.setText(String.valueOf(sumItems));
         }
-        sumid.setText(String.valueOf(sumItems));
-    }
 
-        public void displayInfo(int index){
+
+        public void displayInvoice(int index){
             currentIndex = index;
-            insertInfoFromDb(invoiceList.get(index));
+            insertInfoFromDb(invoiceList.get(currentIndex));
         }
 
-        public void onNext(){
-
+        public void onNext() {
+        if (currentIndex == 0) {
+            displayInvoice(currentIndex + 1);
+        }else {
+            displayInvoice(currentIndex++);
         }
+        }
+
+
 
         public void onBack(){
 

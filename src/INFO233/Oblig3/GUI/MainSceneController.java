@@ -13,15 +13,6 @@ import java.io.IOException;
 public class MainSceneController {
 
     @FXML
-    private Button newCustomer, newAddress, newInvoice, newInvoiceItem, newCategory;
-
-    @FXML
-    private Button editCustomer, editAddress, editInvoice, editInvoiceItem, editCategory;
-
-    @FXML
-    private Button showInvoice;
-
-    @FXML
     private Parent parent;
 
     @FXML
@@ -83,6 +74,32 @@ public class MainSceneController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void onNewProduct(){
+        try {
+            AnchorPane anchor = FXMLLoader.load(getClass().getResource("NewProductFXML.fxml"));
+            Scene scene = new Scene(anchor);
+            Stage stage = (Stage) parent.getScene().getWindow();
+            stage.setScene(scene);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void onEditCustomer(){
+        try {
+            AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditCustomerStage1FXML.fxml"));
+            Scene scene = new Scene(anchor);
+            Stage stage = (Stage) parent.getScene().getWindow();
+            stage.setScene(scene);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 

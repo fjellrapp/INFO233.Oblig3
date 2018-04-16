@@ -19,7 +19,7 @@ public class CustomerDAOImpl {
         Connection con = connector.connect();
         Customer customer = new Customer();
         String SQL = "SELECT * FROM customer " +
-                "WHERE " + id +";";
+                "WHERE customer_id = " + id +";";
 
         try{
             Statement stmnt = con.createStatement();
@@ -110,7 +110,7 @@ public class CustomerDAOImpl {
             "customer_name = ?, " +
             "address = ?, " +
             "phone_number = ?," +
-            "billing_account = ?," +
+            "billing_account = ?" +
             "WHERE customer_id = " + customer.getCustomerId() + ";");
             preparedStatement.setString(1, customer.getCustomerName());
             preparedStatement.setInt(2, customer.getAddress());

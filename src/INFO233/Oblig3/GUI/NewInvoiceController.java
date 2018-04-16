@@ -45,20 +45,9 @@ public class NewInvoiceController {
     public Invoice newInvoice(){
         Invoice invoice = new Invoice();
         invoice.setInvoiceId(Integer.parseInt(newid.getText()));
-
-        for (Customer s : list){
-            if (s.getCustomerId() == Integer.parseInt(newCustomer.getText())){
-                invoice.setInvoiceId(Integer.parseInt(newCustomer.getText()));
-                resultText.setText(s.getCustomerName() + " " + "exists." + " proceeding..");
-            }else{
-                resultText.setText("This customer does not exist in our database");
-            }
-        }
-
+        invoice.setCustomer(Integer.parseInt(newCustomer.getText()));
         invoice.setDato(newDate.getText());
-
         resultText.setText("Invoice created.");
-        resultText.setWrapText(true);
         return invoice;
 
     }

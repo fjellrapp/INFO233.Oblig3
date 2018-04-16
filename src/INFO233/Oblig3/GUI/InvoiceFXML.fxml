@@ -81,10 +81,10 @@
       
             
       
-                <VBox alignment="TOP_LEFT" prefWidth="98.0" spacing="5">
+                <VBox alignment="TOP_LEFT" prefHeight="54.0" prefWidth="135.0" spacing="5">
               <children>
             
-                          <Label prefHeight="33.0" prefWidth="78.0" style="-fx-underline: true" text="Konto: " />
+                          <Label prefHeight="22.0" prefWidth="73.0" style="-fx-underline: true" text="Konto: " />
                   <Text fx:id="billingid" />
               </children>
           </VBox>

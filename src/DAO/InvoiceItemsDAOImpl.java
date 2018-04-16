@@ -1,6 +1,7 @@
 package DAO;
 
 import Entities.Customer;
+import Entities.Invoice;
 import Entities.InvoiceItems;
 import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 
@@ -13,7 +14,10 @@ public class InvoiceItemsDAOImpl {
 
     SQLConnectorFactory connector = new SQLConnectorFactory();
 
-    public InvoiceItems accessInvoiceItems(int id){
+    public ArrayList<InvoiceItems> accessInvoiceItems(int id){
+
+        ArrayList<InvoiceItems> list = new ArrayList<>();
+
         Connection conn = connector.connect();
         InvoiceItems items = new InvoiceItems();
         String SQL = "SELECT * FROM invoice_items " +
@@ -25,13 +29,14 @@ public class InvoiceItemsDAOImpl {
             if (resultSet.next()){
                 items.setInvoice(resultSet.getInt("invoice"));
                 items.setProduct(resultSet.getInt("product"));
+                list.add(items);
             }
         }catch (SQLException e){
             e.printStackTrace();
         }finally {
             connector.disconnect();
         }
-        return items;
+        return list;
     }
 
     public void addInvoiceItems(InvoiceItems items){

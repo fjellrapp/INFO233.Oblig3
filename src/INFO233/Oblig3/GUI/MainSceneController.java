@@ -112,6 +112,17 @@ public class MainSceneController {
 
 
 
+    @FXML
+    public void onEditCategory(){
+        try {
+            AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditCategoryPrestageFXML.fxml"));
+            Scene scene = new Scene(anchor);
+            Stage stage = (Stage) parent.getScene().getWindow();
+            stage.setScene(scene);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
 
 

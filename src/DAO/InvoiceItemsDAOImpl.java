@@ -98,7 +98,7 @@ public class InvoiceItemsDAOImpl {
         Connection conn = connector.connect();
         try{
             PreparedStatement preparedStatement = conn.prepareStatement("UPDATE invoice_items SET " +
-            "product = ?, "+
+            "product = ? "+
             "WHERE invoice = " + invoiceItems.getInvoice() + ";");
             preparedStatement.setInt(1, invoiceItems.getProduct());
         }catch (SQLException e){

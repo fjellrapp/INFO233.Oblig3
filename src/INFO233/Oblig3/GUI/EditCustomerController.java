@@ -2,11 +2,8 @@ package INFO233.Oblig3.GUI;
 
 import DAO.CustomerDAOImpl;
 import Entities.Customer;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.fxml.LoadException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -15,8 +12,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 
 public class EditCustomerController{
@@ -77,7 +72,7 @@ public class EditCustomerController{
       @FXML
     public void onBack(){
         try {
-            AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));
+            AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditCustomerPrestageFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);

@@ -93,7 +93,7 @@ public class CategoryDAOImpl {
         Connection conn = connector.connect();
         try {
             PreparedStatement preparedStatement = conn.prepareStatement("UPDATE category SET " +
-                    "category_name = ?, " +
+                    "category_name = ? " +
                     "WHERE category_id = " + category.getCategoryId() + ";");
             preparedStatement.setString(1, category.getCategoryName());
             preparedStatement.execute();

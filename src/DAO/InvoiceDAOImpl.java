@@ -97,7 +97,7 @@ public class InvoiceDAOImpl {
         try{
             PreparedStatement preparedStatement = conn.prepareStatement("UPDATE invoice SET " +
             "customer = ?, " +
-            "dato = ?, " +
+            "dato = ? " +
             "WHERE invoice_id = " +invoice.getInvoiceId() + ";");
             preparedStatement.setInt(1, invoice.getCustomer());
             preparedStatement.setString(2, invoice.getDato());

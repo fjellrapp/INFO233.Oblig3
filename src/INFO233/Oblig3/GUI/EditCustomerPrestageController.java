@@ -12,18 +12,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class EditCustomerStage1Controller {
+public class EditCustomerPrestageController {
 
     @FXML
     private Parent parent;
 
     @FXML
     private TextField id;
-
-    private CustomerDAOImpl customerDAO = new CustomerDAOImpl();
-
-
-
 
 
     public void onNext(){
@@ -43,6 +38,16 @@ public class EditCustomerStage1Controller {
 
     }
 
+    public void onBack(){
+        try {
+            AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));
+            Scene scene = new Scene(anchor);
+            Stage stage = (Stage) parent.getScene().getWindow();
+            stage.setScene(scene);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
 
 }

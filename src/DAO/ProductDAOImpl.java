@@ -109,7 +109,7 @@ public class ProductDAOImpl {
             "product_name = ?, "+
             "description = ?, " +
             "price = ?, " +
-            "category = ?, "+
+            "category = ? "+
             "WHERE product_id = " + product.getProductId() + ";");
             preparedStatement.setString(1, product.getProductName());
             preparedStatement.setString(2, product.getDescription());

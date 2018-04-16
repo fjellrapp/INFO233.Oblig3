@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="parent" prefHeight="239.0" prefWidth="482.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="INFO233.Oblig3.GUI.EditCustomerStage1Controller">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="parent" prefHeight="239.0" prefWidth="482.0" xmlns="http://javafx.com/javafx/9.0.4" fx:controller="INFO233.Oblig3.GUI.EditCustomerPrestageController">
    <children>
       <Label layoutX="76.0" layoutY="39.0" text="Which customer do you want to edit?">
          <font>
@@ -17,6 +16,6 @@
       <Label layoutX="95.0" layoutY="112.0" text="CustomerID" />
       <TextField fx:id="id" layoutX="217.0" layoutY="107.0" promptText="Type ID" />
       <Button layoutX="325.0" layoutY="152.0" mnemonicParsing="false" onAction="#onNext" text="Next" />
-      <Button layoutX="95.0" layoutY="152.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="95.0" layoutY="152.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
    </children>
 </AnchorPane>

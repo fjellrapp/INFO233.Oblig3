@@ -109,7 +109,7 @@ public class AddressDAOImpl {
                 "street_number = ?," +
                 "street_name = ?, " +
                 "postal_code = ?," +
-                "postal_town = ?," +
+                "postal_town = ?" +
                 "WHERE address_id = " + address.getAddressId() + ";";
 
         try {

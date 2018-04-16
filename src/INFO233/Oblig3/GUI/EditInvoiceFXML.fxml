@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="parent" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" fx:controller="INFO233.Oblig3.GUI.EditInvoiceController">
+   <children>
+      <Label layoutX="87.0" layoutY="52.0" text="Edit Invoice">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="invoiceid" editable="false" layoutX="139.0" layoutY="93.0" opacity="0.6" />
+      <TextField fx:id="customer" layoutX="139.0" layoutY="132.0" promptText="insert ID" />
+      <TextField fx:id="date" layoutX="139.0" layoutY="173.0" promptText="Insert Date" />
+      <Label layoutX="61.0" layoutY="98.0" text="InvoiceID" />
+      <Label layoutX="61.0" layoutY="137.0" text="Customer" />
+      <Label layoutX="61.0" layoutY="178.0" text="Date" />
+      <Button layoutX="139.0" layoutY="221.0" mnemonicParsing="false" onAction="#editInvoice" text="Submit" />
+      <Button layoutX="290.0" layoutY="221.0" mnemonicParsing="false" onAction="#onDisplay" text="Display current data" />
+      <Button layoutX="447.0" layoutY="221.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
+      <TextArea fx:id="systemText" layoutX="-1.0" layoutY="284.0" prefHeight="116.0" prefWidth="600.0" />
+   </children>
+</AnchorPane>

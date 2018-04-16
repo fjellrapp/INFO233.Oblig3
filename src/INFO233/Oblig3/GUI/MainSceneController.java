@@ -124,6 +124,18 @@ public class MainSceneController {
         }
     }
 
+    @FXML
+    public void onEditInvoice(){
+        try {
+            AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditInvoicePrestageFXML.fxml"));
+            Scene scene = new Scene(anchor);
+            Stage stage = (Stage) parent.getScene().getWindow();
+            stage.setScene(scene);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
 
 
 }

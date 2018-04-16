@@ -14,9 +14,8 @@ public class InvoiceItemsDAOImpl {
 
     SQLConnectorFactory connector = new SQLConnectorFactory();
 
-    public ArrayList<InvoiceItems> accessInvoiceItems(int id){
+    public InvoiceItems accessInvoiceItems(int id){
 
-        ArrayList<InvoiceItems> list = new ArrayList<>();
 
         Connection conn = connector.connect();
         InvoiceItems items = new InvoiceItems();
@@ -29,14 +28,14 @@ public class InvoiceItemsDAOImpl {
             if (resultSet.next()){
                 items.setInvoice(resultSet.getInt("invoice"));
                 items.setProduct(resultSet.getInt("product"));
-                list.add(items);
+
             }
         }catch (SQLException e){
             e.printStackTrace();
         }finally {
             connector.disconnect();
         }
-        return list;
+        return items;
     }
 
     public void addInvoiceItems(InvoiceItems items){
@@ -101,6 +100,7 @@ public class InvoiceItemsDAOImpl {
             "product = ? "+
             "WHERE invoice = " + invoiceItems.getInvoice() + ";");
             preparedStatement.setInt(1, invoiceItems.getProduct());
+            preparedStatement.execute();
         }catch (SQLException e){
             e.printStackTrace();
         }finally {

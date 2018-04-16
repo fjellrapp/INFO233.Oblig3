@@ -61,7 +61,6 @@ public class InvoiceController implements Initializable {
         Address address = addressDAO.accessAddress(invoices.getCustomer());
         Invoice invoice = invoiceDAO.accessInvoice(invoices.getCustomer());
 
-        ArrayList<InvoiceItems> items = invoiceItemsDAO.accessInvoiceItems(invoice.getInvoiceId());
 
 
         navnId.setText(customer.getCustomerName());
@@ -72,16 +71,16 @@ public class InvoiceController implements Initializable {
         telefonid.setText(customer.getPhoneNumber());
         billingid.setText(customer.getBillingAccount());
 
-        itemsDisplay(items);
+        itemsDisplay();
 
 
     }
 
-     private void itemsDisplay(ArrayList<InvoiceItems> items){
+     private void itemsDisplay(){
 
         float sumItems = 0;
 
-            for (InvoiceItems item : items) {
+            for (InvoiceItems item : invoiceItemsList) {
                 Product product = productDAO.accessProduct(item.getProduct());
                 Text itemName = new Text(product.getProductName());
                 Text itemPrice = new Text(String.valueOf(product.getPrice()));

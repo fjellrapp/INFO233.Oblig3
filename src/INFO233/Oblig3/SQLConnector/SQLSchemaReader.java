@@ -59,11 +59,7 @@ public class SQLSchemaReader {
      */
     public static Boolean fileExists(){
         File file = new File("oblig3v1_database.db");
-        if (file.exists() && !file.isDirectory()){
-            return true;
-        }else{
-            return false;
-        }
+        return file.exists() && !file.isDirectory();
     }
 
 

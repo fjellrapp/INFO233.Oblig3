@@ -34,11 +34,6 @@ public class SQLConnectorFactory {
         return connection;
     }
 
-    public void connectionCase(){
-
-
-
-    }
 
 
     public void disconnect() {
@@ -53,11 +48,7 @@ public class SQLConnectorFactory {
     }
 
     public boolean isConnected(){
-        if (connection != null){
-            return true;
-        }else{
-            return false;
-        }
+        return connection != null;
     }
 
 

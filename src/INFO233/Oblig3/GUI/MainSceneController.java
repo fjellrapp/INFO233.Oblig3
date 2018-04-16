@@ -136,6 +136,31 @@ public class MainSceneController {
         }
     }
 
+    @FXML
+    public void onEditProduct(){
+        try {
+            AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditProductPrestageFXML.fxml"));
+            Scene scene = new Scene(anchor);
+            Stage stage = (Stage) parent.getScene().getWindow();
+            stage.setScene(scene);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void onEditInvoiceItem(){
+        try {
+            AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditInvoiceItemsPrestageFXML.fxml"));
+            Scene scene = new Scene(anchor);
+            Stage stage = (Stage) parent.getScene().getWindow();
+            stage.setScene(scene);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+
 
 
 }

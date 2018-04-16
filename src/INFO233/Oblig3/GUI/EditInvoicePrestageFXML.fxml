@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="parent" prefHeight="264.0" prefWidth="491.0" xmlns="http://javafx.com/javafx/9.0.4" fx:controller="INFO233.Oblig3.GUI.EditInvoicePrestageController">
    <children>
       <Label layoutX="94.0" layoutY="56.0" text="Which Invoice do you want to edit?">

@@ -21,38 +21,23 @@ public class NewCustomerController {
     @FXML
     private TextField newnameId, newId, newAddressId, newPhonenrId, newAccountnoId;
 
-    @FXML
-    private TextField addressid, streetnoid, streetnameid, postalcodeId, postaltownid;
+
 
     @FXML
     private TextArea resultArea;
 
-    @FXML
-    private TableColumn<Customer, Integer> columnId;
-
-    @FXML
-    private TableColumn<Customer, String> columnNameId;
-
-    @FXML
-    private TableColumn<Customer, Integer> columnAddressId;
-    @FXML
-    private TableColumn<Customer, String> columnPhonenrId;
-    @FXML
-    private TableColumn<Customer, String> columnAccountnoId;
 
     @FXML
     private Parent parent;
 
-    private AddressDAOImpl addressDAO = new AddressDAOImpl();
+
     private CustomerDAOImpl customerDAO = new CustomerDAOImpl();
 
 
     @FXML
     public void createButtonPressed() {
-        addressDAO.addAddress(newAddress());
         customerDAO.addCustomer(newCustomer());
-        resultArea.setText("Customer " + newCustomer().getCustomerName() + " Added." +
-                "With address " + newAddress().getStreetName() + " " + newAddress().getStreetNumber());
+        resultArea.setText("Customer " + newCustomer().getCustomerName() + " added.");
 
     }
 
@@ -67,16 +52,7 @@ public class NewCustomerController {
         return customer;
     }
 
-    @FXML
-    public Address newAddress() {
-        Address address = new Address();
-        address.setPostalTown(postaltownid.getText());
-        address.setPostalCode(postalcodeId.getText());
-        address.setStreetName(streetnameid.getText());
-        address.setAddressId(Integer.parseInt(addressid.getText()));
-        address.setStreetNumber(streetnoid.getText());
-        return address;
-    }
+
 
     @FXML
     public void returnToMain() {

@@ -27,6 +27,18 @@ public class MainSceneController {
     }
 
     @FXML
+    public void onNewAddress(){
+        try {
+            AnchorPane anchor = FXMLLoader.load(getClass().getResource("NewAddressFXML.fxml"));
+            Scene scene = new Scene(anchor);
+            Stage stage = (Stage) parent.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public void onShowInvoice() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("InvoiceFXML.fxml"));

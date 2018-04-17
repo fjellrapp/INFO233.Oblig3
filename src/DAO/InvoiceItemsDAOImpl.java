@@ -17,14 +17,12 @@ public class InvoiceItemsDAOImpl {
      * @param id IDen (InvoiceID) til objektet.
      * @return objektet
      */
-    public List<InvoiceItems> getAllInvoiceItems(int id) {
-
+    public List<InvoiceItems> getInvoiceItemsById(int id) {
 
         Connection conn = connector.connect();
         List<InvoiceItems> items = new LinkedList<>();
         String SQL = "SELECT * FROM invoice_items " +
                 "WHERE invoice = " + id + ";";
-
         try {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL);
@@ -44,7 +42,6 @@ public class InvoiceItemsDAOImpl {
     }
 
     public InvoiceItems accessInvoiceItems(int id) {
-
 
         Connection conn = connector.connect();
         String SQL = "SELECT * FROM invoice_items " +

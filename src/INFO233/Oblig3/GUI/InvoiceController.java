@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -16,7 +15,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -65,7 +63,7 @@ public class InvoiceController implements Initializable {
         Customer customer = customerDAO.accessCustomer(invoices.getCustomer());
         Address address = addressDAO.accessAddress(invoices.getCustomer());
         Invoice invoice = invoiceDAO.accessInvoice(invoices.getCustomer());
-        List<InvoiceItems> invoiceItemsList = invoiceItemsDAO.getAllInvoiceItems(invoice.getInvoiceId());
+        List<InvoiceItems> invoiceItemsList = invoiceItemsDAO.getInvoiceItemsById(invoices.getInvoiceId());
 
 
         navnId.setText(customer.getCustomerName());
@@ -103,7 +101,7 @@ public class InvoiceController implements Initializable {
 
     public void displayInvoice(int index) {
         currentIndex = index;
-        insertInfoFromDb(invoiceList.get(currentIndex));
+        insertInfoFromDb(invoiceList.get(index));
     }
 
     public void onNext() {
@@ -120,6 +118,7 @@ public class InvoiceController implements Initializable {
     public void onBack() {
         if (currentIndex != 0){
             currentIndex -= 1;
+            hidePrevious();
             displayInvoice(currentIndex);
         }else {
             try {

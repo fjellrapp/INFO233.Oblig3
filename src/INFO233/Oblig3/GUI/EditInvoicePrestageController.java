@@ -1,9 +1,7 @@
 package INFO233.Oblig3.GUI;
 
 import DAO.InvoiceDAOImpl;
-import DAO.InvoiceItemsDAOImpl;
 import Entities.Invoice;
-import Entities.InvoiceItems;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

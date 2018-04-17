@@ -1,6 +1,5 @@
 package DAO;
 
-import Entities.InvoiceItems;
 import Entities.Product;
 import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 

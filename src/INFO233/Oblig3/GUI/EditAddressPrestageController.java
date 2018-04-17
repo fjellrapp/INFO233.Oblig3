@@ -2,7 +2,6 @@ package INFO233.Oblig3.GUI;
 
 import DAO.AddressDAOImpl;
 import Entities.Address;
-import INFO233.Oblig3.SQLConnector.SQLSchemaReader;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,12 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.NoSuchElementException;
 
 public class EditAddressPrestageController {
 

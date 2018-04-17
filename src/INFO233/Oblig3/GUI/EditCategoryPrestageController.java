@@ -1,7 +1,6 @@
 package INFO233.Oblig3.GUI;
 
 import DAO.CategoryDAOImpl;
-import Entities.Address;
 import Entities.Category;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

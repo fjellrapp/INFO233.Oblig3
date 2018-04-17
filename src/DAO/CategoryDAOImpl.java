@@ -3,7 +3,6 @@ package DAO;
 import Entities.Category;
 import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 
-
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;

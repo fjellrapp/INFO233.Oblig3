@@ -1,6 +1,5 @@
 package DAO;
 
-import Entities.Category;
 import Entities.Customer;
 import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 

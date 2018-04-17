@@ -79,7 +79,6 @@ public class InvoiceController implements Initializable {
         float sumItems = 0;
 
         for (InvoiceItems item : invoiceItemsList) {
-
             Product product = productDAO.accessProduct(item.getProduct());
             Text itemName = new Text(product.getProductName());
             Text itemPrice = new Text(String.valueOf(product.getPrice()));

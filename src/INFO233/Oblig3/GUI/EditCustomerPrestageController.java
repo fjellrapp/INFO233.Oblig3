@@ -1,6 +1,5 @@
 package INFO233.Oblig3.GUI;
 
-import DAO.CategoryDAOImpl;
 import DAO.CustomerDAOImpl;
 import Entities.Customer;
 import javafx.fxml.FXML;
@@ -11,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 
 import java.io.IOException;
 

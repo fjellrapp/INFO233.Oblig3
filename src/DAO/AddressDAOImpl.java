@@ -1,11 +1,9 @@
 package DAO;
 
 import Entities.Address;
-import Entities.Invoice;
 import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 

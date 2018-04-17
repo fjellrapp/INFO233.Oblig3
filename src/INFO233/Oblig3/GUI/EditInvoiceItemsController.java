@@ -22,13 +22,7 @@ public class EditInvoiceItemsController {
     private TextField id, productid;
 
     @FXML
-    private Text producttext;
-
-    @FXML
     private TextArea systemText;
-
-    @FXML
-    private HBox productBox;
 
     @FXML
     private Parent parent;

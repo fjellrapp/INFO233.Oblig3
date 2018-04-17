@@ -27,6 +27,12 @@ public class EditCategoryPrestageController {
 
     private CategoryDAOImpl categoryDAO = new CategoryDAOImpl();
 
+    /**
+     * Henter ID fra fra tekstfeltet og kaller metoden doesIDExist() som sjekker om IDen eksisterer.
+     * Går videre til try-blokken hvis den eksisterer og fører brukeren inn til
+     * EditCategory
+     */
+
     public void onNext() {
         int collectedId = Integer.parseInt(categoryid.getText());
         if (!doesIDExist()) {
@@ -47,13 +53,19 @@ public class EditCategoryPrestageController {
         }
     }
 
+    /**
+     * Sjekker om den gitte IDen eksisterer
+     * @return true eller false
+     */
     private boolean doesIDExist() {
         Category category = categoryDAO.accessCategory(Integer.parseInt(categoryid.getText()));
         return category.getCategoryName() != null;
     }
 
+    /**
+     * Spesifiserer hva som skal skje når brukeren trykker "back"
+     */
     public void onBack() {
-
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));
             Scene scene = new Scene(anchor);

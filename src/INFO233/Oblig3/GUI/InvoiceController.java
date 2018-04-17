@@ -48,15 +48,21 @@ public class InvoiceController implements Initializable {
         currentIndex = 0;
         invoiceDAO = new InvoiceDAOImpl();
         displayInvoice(currentIndex);
-
     }
 
+    /**
+     * Gjemmer elementene fra den forrige fakturaen når man skal vise en ny faktura
+     */
     public void hidePrevious(){
         pris.getChildren().clear();
         type.getChildren().clear();
         pbeskrivelse.getChildren().clear();
     }
 
+    /**
+     * Henter informasjon fra en kunde, addresse og item til en gitt faktura.
+     * @param invoices Fakturaen som skal vises.
+     */
 
     public void insertInfoFromDb(Invoice invoices) {
 
@@ -78,6 +84,11 @@ public class InvoiceController implements Initializable {
 
     }
 
+    /**
+     * Henter inn en liste med items som tilhører en faktura. Går gjennom disse
+     * og genererer et Text-element for hver av den.
+     * @param list, listen med items som tilhører en faktura.
+     */
     private void itemsDisplay(List<InvoiceItems> list) {
 
         float sumItems = 0;
@@ -98,11 +109,18 @@ public class InvoiceController implements Initializable {
     }
 
 
+    /**
+     * Viser en faktura ved en gitt index.
+     * @param index
+     */
     public void displayInvoice(int index) {
         currentIndex = index;
         insertInfoFromDb(invoiceList.get(index));
     }
 
+    /**
+     * Viser en ny faktura når brukeren trykket next
+     */
     public void onNext() {
         if (currentIndex >= 0 && currentIndex < invoiceList.size() - 1) {
             hidePrevious();
@@ -110,7 +128,9 @@ public class InvoiceController implements Initializable {
         }
     }
 
-
+    /**
+     * Går tilbake til forrige faktura, eller ut til hovedmenyen om den er på første index.
+     */
     public void onBack() {
         if (currentIndex != 0){
             currentIndex -= 1;

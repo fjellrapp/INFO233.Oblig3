@@ -1,6 +1,8 @@
 package INFO233.Oblig3.GUI;
 
+import DAO.AddressDAOImpl;
 import DAO.CustomerDAOImpl;
+import Entities.Address;
 import Entities.Customer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +34,9 @@ public class EditCustomerController {
         id.setText(Integer.toString(inheritedID));
     }
 
+    /**
+     * Gjør det mulig å endre på en kunde. Fungerer også som action for "Submit"-knappen.
+     */
 
     @FXML
     public void editCustomer() {
@@ -50,15 +55,21 @@ public class EditCustomerController {
         customerDAO.editCustomer(customer);
     }
 
+    /**
+     * Viser informasjonen som står på kunden.
+     */
     @FXML
     public void displayCustomer() {
         try {
             Customer c = customerDAO.accessCustomer(Integer.parseInt(id.getText()));
+            AddressDAOImpl addressDAO = new AddressDAOImpl();
+            Address address = addressDAO.accessAddress(Integer.parseInt(id.getText()));
 
             systemText.setText(
                     "Currently registered data on this customer: " + " \n" +
                             "Name: " + c.getCustomerName() + " \n" +
-                            "Address: " + c.getAddress() + " \n" +
+                            "AddressID: " + c.getAddress() + " \n" +
+                            "Address: " + address.getStreetName() + " " + address.getStreetNumber() + " \n" +
                             "Phonenr: " + c.getPhoneNumber() + " \n" +
                             "Account: " + c.getBillingAccount() + " \n"
             );
@@ -67,6 +78,9 @@ public class EditCustomerController {
         }
     }
 
+    /**
+     * Fører brukeren tilbake til stadiet hvor man kan endre ID.
+     */
     @FXML
     public void onBack() {
         try {

@@ -24,8 +24,8 @@ public class EditCategoryController {
     private TextArea systemText;
 
     /**
-     * Setter ID
-     * @param inheritedID
+     * Brukes av EditCategoryPrestageController for å hente brukerdefinert ID.
+     * @param inheritedID IDen som kommer inn i den andre klassen
      */
 
     public void setId(Integer inheritedID) {
@@ -34,15 +34,20 @@ public class EditCategoryController {
         }
     }
 
+    /**
+     * Endrer navn på en kategori.
+     */
     public void editCategory() {
         Category category = categoryDAO.accessCategory(Integer.parseInt(categoryid.getText()));
         if (!name.getText().trim().isEmpty()) {
             category.setCategoryName(name.getText());
         }
-
         categoryDAO.editCategory(category);
     }
 
+    /**
+     * Viser brukeren hvilke data som er registert på en gitt kategori.
+     */
     public void onDisplay() {
         try {
             Category c = categoryDAO.accessCategory(Integer.parseInt(categoryid.getText()));
@@ -56,6 +61,9 @@ public class EditCategoryController {
         }
     }
 
+    /**
+     * Brukes på "Back"-knappen i vinduet og fører brukeren tilbake til "Prestage" vinduet.
+     */
     public void onBack() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditCategoryPrestageFXML.fxml"));

@@ -26,6 +26,10 @@ public class NewAddressController {
 
     private AddressDAOImpl addressDAO = new AddressDAOImpl();
 
+    /**
+     * Oppretter en ny addresse ved å sjekke for input fra brukeren.
+     * @return et nytt Address-objekt
+     */
     @FXML
     public Address newAddress() {
         Address address = new Address();
@@ -37,6 +41,9 @@ public class NewAddressController {
         return address;
     }
 
+    /**
+     * Når brukeren trykket "create", legges addressen til i addAddress og bruker newAddress() som parameter.
+     */
     @FXML
     public void onCreate() {
         addressDAO.addAddress(newAddress());
@@ -44,6 +51,10 @@ public class NewAddressController {
 
     }
 
+    /**
+     * Spesifiserer hva som skjer når brukeren trykker back.
+     * Blir deretter først tilbake til menyen.
+     */
     @FXML
     public void onBack() {
         try {

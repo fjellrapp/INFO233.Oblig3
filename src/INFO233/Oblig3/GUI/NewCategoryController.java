@@ -27,6 +27,10 @@ public class NewCategoryController {
     private CategoryDAOImpl categoryDAO = new CategoryDAOImpl();
 
 
+    /**
+     * Oppretter en ny kategori
+     * @return kategori-objekt
+     */
     public Category newCategory() {
         Category category = new Category();
         category.setCategoryName(nameid.getText());
@@ -34,11 +38,18 @@ public class NewCategoryController {
         return category;
     }
 
+    /**
+     * Håndterer insert-knappen. Legger til objektet til databasen.
+     */
     public void onInsertButton() {
         categoryDAO.addCategory(newCategory());
         systemText.setText(newCategory().getCategoryName() + " inserted");
 
     }
+
+    /**
+     * Fører brukerern tilbake til main
+     */
 
     public void onBackButton() {
         try {

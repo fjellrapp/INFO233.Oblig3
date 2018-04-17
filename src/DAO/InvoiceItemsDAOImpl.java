@@ -12,10 +12,10 @@ public class InvoiceItemsDAOImpl {
     SQLConnectorFactory connector = new SQLConnectorFactory();
 
     /**
-     * Gir tilgang på en fakturagjenstand basert på ID
+     * Returnerer alle gjenstander knyttet til en faktura.
      *
      * @param id IDen (InvoiceID) til objektet.
-     * @return objektet
+     * @return listen med alle items
      */
     public List<InvoiceItems> getInvoiceItemsById(int id) {
 
@@ -42,6 +42,11 @@ public class InvoiceItemsDAOImpl {
         return items;
     }
 
+    /**
+     * Gir tilgang til invoiceItems basert på et invoice-items ID ved å returnere et objekt
+     * @param id ID til objektet
+     * @return objektet
+     */
     public InvoiceItems accessInvoiceItems(int id) {
 
         Connection conn = connector.connect();

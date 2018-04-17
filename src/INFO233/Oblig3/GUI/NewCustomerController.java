@@ -33,7 +33,9 @@ public class NewCustomerController {
 
     private CustomerDAOImpl customerDAO = new CustomerDAOImpl();
 
-
+    /**
+     * Hånderer createknappen. Sender et customer-objekt til databasen for å opprettes.
+     */
     @FXML
     public void createButtonPressed() {
         customerDAO.addCustomer(newCustomer());
@@ -41,6 +43,10 @@ public class NewCustomerController {
 
     }
 
+    /**
+     * Oppretter et nytt customer-objekt basert på bruker input.
+     * @return
+     */
     @FXML
     public Customer newCustomer() {
         Customer customer = new Customer();
@@ -53,7 +59,9 @@ public class NewCustomerController {
     }
 
 
-
+    /**
+     * Returnerer brukeren til main.
+     */
     @FXML
     public void returnToMain() {
         try {

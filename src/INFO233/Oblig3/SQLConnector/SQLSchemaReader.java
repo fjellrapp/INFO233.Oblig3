@@ -23,7 +23,6 @@ public class SQLSchemaReader {
     public static void intitializeDB(Connection connection, File file) {
 
         InputStream fileIn = null;
-
         try {
             fileIn = new FileInputStream(file);
         } catch (FileNotFoundException e) {
@@ -55,7 +54,7 @@ public class SQLSchemaReader {
 
 
     /**
-     * Sjekker om filen allerede eksisterer.
+     * Sjekker om filen allerede eksisterer. Brukes av SQLConnectionFactory-klassen.
      *
      * @return true eller false
      */

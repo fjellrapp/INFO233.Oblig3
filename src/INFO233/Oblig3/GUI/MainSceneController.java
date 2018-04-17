@@ -14,6 +14,12 @@ public class MainSceneController {
     @FXML
     private Parent parent;
 
+    /**
+     * Spesifiserer hva som skjer når man trykker på knappen for ny customer.
+     * Alle metodene under gjør så å si det samme, ved å vise til neste FXML-dokument.
+     * Skriver derfor ikke mer javadoc på disse.
+     */
+
     @FXML
     public void onNewCustomer() {
         try {

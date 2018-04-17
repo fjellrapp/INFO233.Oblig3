@@ -4,6 +4,7 @@ import DAO.ProductDAOImpl;
 import Entities.Product;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -12,6 +13,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class EditProductController {
 
@@ -26,10 +29,18 @@ public class EditProductController {
 
     private ProductDAOImpl productDAO = new ProductDAOImpl();
 
+    /**
+     * Setter ID som brukes av EditProductPrestageController
+     * @param inheritedID
+     */
+
     public void setId(Integer inheritedID) {
         productid.setText(Integer.toString(inheritedID));
     }
 
+    /**
+     * Gjør det mulig å endre et produkt.
+     */
     public void editProduct() {
         Product product = productDAO.accessProduct(Integer.parseInt(productid.getText()));
         if (!name.getText().trim().isEmpty()) {
@@ -45,11 +56,13 @@ public class EditProductController {
     }
 
 
+    /**
+     * Viser informasjon om et produkt.
+     */
     public void onDisplay() {
 
         try {
             Product p = productDAO.accessProduct(Integer.parseInt(productid.getText()));
-
             systemText.setText(
                     "Currently registered data about this product: " + " \n" +
                             "ID: " + p.getProductId() + " \n" +
@@ -63,6 +76,9 @@ public class EditProductController {
         }
     }
 
+    /**
+     * Håndterer hva som skjer når brukeren trykker back
+     */
     @FXML
     public void onBack() {
         try {
@@ -74,4 +90,5 @@ public class EditProductController {
             e.printStackTrace();
         }
     }
+
 }

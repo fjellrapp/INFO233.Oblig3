@@ -27,12 +27,19 @@ public class EditProductPrestageController {
 
     private ProductDAOImpl productDAO = new ProductDAOImpl();
 
+    /**
+     * Sjekker om en gitt id eksisterer
+     * @return true eller false
+     */
     private boolean doesIDExist() {
         Product product = productDAO.accessProduct(Integer.parseInt(productid.getText()));
         return product.getProductName() != null;
     }
 
 
+    /**
+     * Håndterer hva som skjer når brukeren trykker next
+     */
     public void onNext() {
         int collectedId = Integer.parseInt(productid.getText());
         if (!doesIDExist()) {
@@ -52,6 +59,9 @@ public class EditProductPrestageController {
         }
     }
 
+    /**
+     * Håndterer hva som skjer når brukeren trykket Back
+     */
     public void onBack() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));

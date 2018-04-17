@@ -26,11 +26,18 @@ public class EditInvoiceItemsPrestageController {
 
     private InvoiceItemsDAOImpl invoiceItemsDAO = new InvoiceItemsDAOImpl();
 
+    /**
+     * Sjekker om en ID eksisterer.
+     * @return true eller false
+     */
     private boolean doesIDExist() {
         InvoiceItems invoiceItems = invoiceItemsDAO.accessInvoiceItems(Integer.parseInt(id.getText()));
         return invoiceItems.getProduct() >= 1;
     }
 
+    /**
+     * Håndterer hva som skjer når brukeren trykker next.
+     */
     public void onNext() {
         int collectedId = Integer.parseInt(id.getText());
 
@@ -52,6 +59,9 @@ public class EditInvoiceItemsPrestageController {
         }
     }
 
+    /**
+     * Håndterer hva som skjer når brukeren trykker back
+     */
     public void onBack() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));

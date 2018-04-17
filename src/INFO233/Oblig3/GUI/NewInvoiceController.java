@@ -22,8 +22,6 @@ public class NewInvoiceController {
     @FXML
     private TextField newid, newCustomer, newDate;
 
-    @FXML
-    private Button createInvoice;
 
     @FXML
     private Parent parent;
@@ -33,13 +31,19 @@ public class NewInvoiceController {
 
     private CustomerDAOImpl customerDAO = new CustomerDAOImpl();
     private InvoiceDAOImpl invoiceDAO = new InvoiceDAOImpl();
-    private List<Customer> list = customerDAO.getAllCustomers();
 
 
+    /**
+     * Håndterer createknappen. Legger objektet til i DAO og legges inn i databasen.
+     */
     public void createButtonPressed() {
         invoiceDAO.addInvoice(newInvoice());
     }
 
+    /**
+     * Oppretter et nytt invoice objekt
+     * @return objektet
+     */
     public Invoice newInvoice() {
         Invoice invoice = new Invoice();
         invoice.setInvoiceId(Integer.parseInt(newid.getText()));
@@ -50,6 +54,9 @@ public class NewInvoiceController {
 
     }
 
+    /**
+     * Returnerer brukeren tilbake til main
+     */
     public void returnToMain() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));

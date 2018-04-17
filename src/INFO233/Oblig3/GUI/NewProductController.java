@@ -26,7 +26,10 @@ public class NewProductController {
     @FXML
     private Parent parent;
 
-
+    /**
+     * Oppretter et nytt product-objekt.
+     * @return objektet.
+     */
     public Product newProduct() {
         Product product = new Product();
 
@@ -38,12 +41,18 @@ public class NewProductController {
         return product;
     }
 
+    /**
+     * Hånderer create-knappen. Legger til objektet som kommer inn med newProduct().
+     */
     @FXML
     public void addProduct() {
         productDAO.addProduct(newProduct());
         systemText.setText(newProduct().getProductName() + " was added");
     }
 
+    /**
+     * Returnerer brukeren til main.
+     */
     @FXML
     public void returnToMain() {
         try {

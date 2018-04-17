@@ -26,14 +26,20 @@ public class EditCustomerPrestageController {
 
     private CustomerDAOImpl customerDAO = new CustomerDAOImpl();
 
+    /**
+     * Sjekker om en ID eksisterer
+     * @return sant eller usant.
+     */
     private boolean doesIDExist() {
         Customer customer = customerDAO.accessCustomer(Integer.parseInt(id.getText()));
         return customer.getCustomerName() != null;
     }
 
+    /**
+     * Håndterer hva som skjer når man trykker "next".
+     */
     public void onNext() {
         int collectedId = Integer.parseInt(id.getText());
-
         if (!doesIDExist()) {
             alertid.setText("Not a valid ID. Create a new one or input a valid ID");
         } else {
@@ -52,6 +58,9 @@ public class EditCustomerPrestageController {
         }
     }
 
+    /**
+     * Håndterer hva som skjer når man trykket "back".
+     */
     public void onBack() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));

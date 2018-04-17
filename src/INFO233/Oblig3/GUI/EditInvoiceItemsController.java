@@ -32,9 +32,17 @@ public class EditInvoiceItemsController {
     private InvoiceItemsDAOImpl invoiceItemsDAO = new InvoiceItemsDAOImpl();
     private ProductDAOImpl productDAO = new ProductDAOImpl();
 
+    /**
+     * Brukes av EditInvoiceItemsPrestageController for å sette ID.
+     * @param inheritedID
+     */
     public void setId(Integer inheritedID) {
         id.setText(Integer.toString(inheritedID));
     }
+
+    /**
+     * Gjør det mulig å endre en invoiceitem.
+     */
 
     public void editInvoiceItems() {
         InvoiceItems invoiceItems = invoiceItemsDAO.accessInvoiceItems(Integer.parseInt(id.getText()));
@@ -46,6 +54,9 @@ public class EditInvoiceItemsController {
     }
 
 
+    /**
+     * Viser informasjon om en invoiceitem
+     */
     public void onDisplay() {
 
         try {
@@ -64,6 +75,9 @@ public class EditInvoiceItemsController {
     }
 
 
+    /**
+     * Håndterer hva som skjer når brukeren trykker "Back"
+     */
     @FXML
     public void onBack() {
         try {

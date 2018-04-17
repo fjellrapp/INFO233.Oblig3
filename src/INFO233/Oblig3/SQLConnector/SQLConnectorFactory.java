@@ -11,13 +11,16 @@ public class SQLConnectorFactory {
     private static File schema = new File("oblig3v1_database.sql");
     private static Connection connection = null;
 
+
+    /**
+     * Oppretter en connection til databasen.
+     * Sjekker om .db-filen allerede eksisterer, hvis ikke, opprettes den fra det gitte schemaet.
+     * @return En connection.
+     */
     public Connection connect() {
-
-
         String url = "jdbc:sqlite:oblig3v1_database.db";
 
         if (SQLSchemaReader.fileExists()) {
-            System.out.println("Connecting..");
             try {
                 connection = DriverManager.getConnection(url);
             } catch (SQLException e) {
@@ -36,6 +39,10 @@ public class SQLConnectorFactory {
     }
 
 
+    /**
+     * Sjekker om det er en connection. Hvis ja, lukker den connection og setter
+     * den til null.
+     */
     public void disconnect() {
         if (connection != null) {
             try {
@@ -46,11 +53,6 @@ public class SQLConnectorFactory {
             }
         }
     }
-
-    public boolean isConnected() {
-        return connection != null;
-    }
-
 
 }
 

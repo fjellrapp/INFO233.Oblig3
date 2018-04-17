@@ -1,6 +1,8 @@
 package INFO233.Oblig3.GUI;
 
+import DAO.CustomerDAOImpl;
 import DAO.InvoiceDAOImpl;
+import Entities.Customer;
 import Entities.Invoice;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +32,9 @@ public class EditInvoiceController {
         invoiceid.setText(Integer.toString(inheritedID));
     }
 
+    /**
+     * Gjør det mulig å endre en faktura
+     */
     public void editInvoice() {
         Invoice invoice = invoiceDAO.accessInvoice(Integer.parseInt(invoiceid.getText()));
         if (!customer.getText().trim().isEmpty()) {
@@ -42,15 +47,21 @@ public class EditInvoiceController {
     }
 
 
+    /**
+     * Viser informasjon om en faktura.
+     */
     public void onDisplay() {
 
         try {
             Invoice i = invoiceDAO.accessInvoice(Integer.parseInt(invoiceid.getText()));
+            CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+            Customer customer = customerDAO.accessCustomer(Integer.parseInt(invoiceid.getText()));
 
             systemText.setText(
                     "Currently registered data on this invoice: " + " \n" +
                             "ID: " + i.getInvoiceId() + " \n" +
                             "CustomerID: " + i.getCustomer() + " \n" +
+                            "Customer name: " + customer.getCustomerName() + " \n"+
                             "Date " + i.getDato() + " \n"
             );
         } catch (NumberFormatException e) {
@@ -58,6 +69,9 @@ public class EditInvoiceController {
         }
     }
 
+    /**
+     * Fører brukeren tilbake til tidligere GUI.
+     */
     @FXML
     public void onBack() {
         try {

@@ -26,8 +26,11 @@ public class NewInvoiceItemController {
 
     private InvoiceItemsDAOImpl invoiceItemsDAO = new InvoiceItemsDAOImpl();
 
-    // TODO:
 
+    /**
+     * Oppretter et nytt invoiceitems objekt.
+     * @return objektet
+     */
     public InvoiceItems newInvoiceItem() {
         InvoiceItems invoiceItems = new InvoiceItems();
         invoiceItems.setInvoice(Integer.parseInt(invoiceid.getText()));
@@ -35,12 +38,18 @@ public class NewInvoiceItemController {
         return invoiceItems;
 
     }
-
+/**
+ * Håndterer createknappen. Legger til objektet som kommer fra
+ * newInvoiceItem() inn i dao, og inn i databasen.
+ */
     public void buttonAdd() {
         invoiceItemsDAO.addInvoiceItems(newInvoiceItem());
         systemText.setText("Product with ProductID " + newInvoiceItem().getProduct() + " added and InvoiceID " + newInvoiceItem().getInvoice() + " added");
     }
 
+    /**
+     * Håndterer back-knappen. Fører brukeren tila
+     */
     public void buttonBack() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));

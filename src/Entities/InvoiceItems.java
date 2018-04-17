@@ -2,6 +2,10 @@ package Entities;
 
 public class InvoiceItems {
 
+    /**
+     * Entitetsbønne med getters og setters som representerer tabellen InvoiceItems.
+     */
+
     private int invoice;
     private int product;
 

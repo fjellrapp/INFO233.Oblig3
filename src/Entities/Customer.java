@@ -2,13 +2,17 @@ package Entities;
 
 public class Customer {
 
+    /**
+     * Entitetsbønne for customer. Representerer tabellen customer i databasen.
+     */
+
     private int customerId;
     private String customerName;
     private int address;
     private String phoneNumber;
     private String billingAccount;
 
-    public Customer(int id, String name,int address, String phoneNumber, String billingAccount){
+    public Customer(int id, String name, int address, String phoneNumber, String billingAccount) {
         this.customerId = id;
         customerName = name;
         this.address = address;
@@ -16,13 +20,25 @@ public class Customer {
         this.billingAccount = billingAccount;
     }
 
-    public Customer(){
+    public Customer() {
 
     }
+
+    /**
+     * Getter for customer-bønnen
+     *
+     * @return
+     */
 
     public int getCustomerId() {
         return customerId;
     }
+
+    /**
+     * Mutatorer for customer-bønnen
+     *
+     * @param customerId
+     */
 
     public void setCustomerId(int customerId) {
         this.customerId = customerId;

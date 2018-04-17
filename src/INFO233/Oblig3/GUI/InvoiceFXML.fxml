@@ -9,123 +9,127 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="parent" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="INFO233.Oblig3.GUI.InvoiceController">
-      <children>
-      <Label layoutX="309.0" layoutY="43.0" prefHeight="73.0" prefWidth="89.0" text="Faktura">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <HBox alignment="CENTER" focusTraversable="true" layoutX="-3.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="712.0">
-         <children>
-            <Button fx:id="back" mnemonicParsing="false" onAction="#onBack" prefHeight="27.0" prefWidth="64.0" text="Tilbake" />
-            <Button fx:id="next" mnemonicParsing="false" onAction="#onNext" prefHeight="27.0" prefWidth="60.0" text="Neste" />
-         </children>
-      </HBox>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="parent" xmlns="http://javafx.com/javafx/9.0.4"
+            fx:controller="INFO233.Oblig3.GUI.InvoiceController">
+    <children>
+        <Label layoutX="309.0" layoutY="43.0" prefHeight="73.0" prefWidth="89.0" text="Faktura">
+            <font>
+                <Font size="24.0"/>
+            </font>
+        </Label>
+        <HBox alignment="CENTER" focusTraversable="true" layoutX="-3.0" nodeOrientation="LEFT_TO_RIGHT"
+              prefHeight="26.0" prefWidth="712.0">
+            <children>
+                <Button fx:id="back" mnemonicParsing="false" onAction="#onBack" prefHeight="27.0" prefWidth="64.0"
+                        text="Tilbake"/>
+                <Button fx:id="next" mnemonicParsing="false" onAction="#onNext" prefHeight="27.0" prefWidth="60.0"
+                        text="Neste"/>
+            </children>
+        </HBox>
 
-          <VBox layoutX="183.0" layoutY="143.0" spacing="10.0">
-        <children>
-            <VBox>
+        <VBox layoutX="183.0" layoutY="143.0" spacing="10.0">
+            <children>
                 <VBox>
+                    <VBox>
+                        <children>
+                            <Label id="fakturaNr" fx:id="invoiceNoId" style="-fx-underline: true" text="Fakturanr: ">
+                                <font>
+                                    <Font name="System Bold" size="13.0"/>
+                                </font>
+                            </Label>
+                            <Text fx:id="fakuturaid"/>
+                        </children>
+                    </VBox>
+
                     <children>
-                        <Label id="fakturaNr" fx:id="invoiceNoId" style="-fx-underline: true" text="Fakturanr: ">
-                        <font>
-                           <Font name="System Bold" size="13.0" />
-                        </font>
-                     </Label>
-                        <Text fx:id="fakuturaid" />
+                        <Label id="navn" style="-fx-underline: true" text="Navn: "/>
+                        <Text fx:id="navnId"/>
                     </children>
                 </VBox>
 
-                      <children>
-             <Label id="navn" style="-fx-underline: true" text="Navn: " />
-             <Text fx:id="navnId" />
-                </children>
-            </VBox>
+                <VBox>
+                    <children>
+                        <Label style="-fx-underline: true" text="Telefonnr: "/>
+                        <Text fx:id="telefonid"/>
+                    </children>
+                </VBox>
 
-                  <VBox>
-                <children>
-                    <Label style="-fx-underline: true" text="Telefonnr: " />
-                    <Text fx:id="telefonid" />
-                </children>
-            </VBox>
+                <VBox>
+                    <children>
+                        <Label id="addresse" fx:id="fxAddressId" style="-fx-underline: true" text="Addresse: "/>
+                        <Text fx:id="addresseId"/>
+                    </children>
+                </VBox>
 
-               <VBox>
-             <children>
-                <Label id="addresse" fx:id="fxAddressId" style="-fx-underline: true" text="Addresse: " />
-               <Text fx:id="addresseId" />
+                <VBox>
+                    <children>
+                        <Label id="postnummer" fx:id="postalcodeId" style="-fx-underline: true"
+                               text="Poststed/nummer: "/>
+                        <Text fx:id="postId"/>
+                    </children>
+                </VBox>
+
             </children>
-         </VBox>
+        </VBox>
 
-                  <VBox>
-                <children>
-            <Label id="postnummer" fx:id="postalcodeId" style="-fx-underline: true" text="Poststed/nummer: " />
-             <Text fx:id="postId" />
-                </children>
-             </VBox>
+        <VBox layoutX="398.0" layoutY="145.0" prefHeight="102.0" prefWidth="135.0">
+            <children>
 
-              </children>
-    </VBox>
+            </children>
+            <children>
+                <VBox prefHeight="38.0" prefWidth="87.0">
+                    <children>
+                        <Label style="-fx-underline: true" text="Gjelder fra: "/>
+                        <Text fx:id="datoid"/>
+                    </children>
+                </VBox>
 
-               <VBox layoutX="398.0" layoutY="145.0" prefHeight="102.0" prefWidth="135.0">
-             <children>
 
-                </children>
-         <children>
-            <VBox prefHeight="38.0" prefWidth="87.0">
-               <children>
-              <Label style="-fx-underline: true" text="Gjelder fra: " />
-                  <Text fx:id="datoid" />
-               </children>
-            </VBox>
-      
-            
-      
                 <VBox alignment="TOP_LEFT" prefHeight="54.0" prefWidth="135.0" spacing="5">
-              <children>
-            
-                          <Label prefHeight="22.0" prefWidth="73.0" style="-fx-underline: true" text="Konto: " />
-                  <Text fx:id="billingid" />
-              </children>
-          </VBox>
-         </children>
-         </VBox>
-      <HBox layoutX="19.0" layoutY="407.0" prefHeight="136.0" prefWidth="676.0" spacing="20.0">
-         <children>
-               <VBox fx:id="type" prefHeight="136.0" prefWidth="284.0">
-                   <children>
+                    <children>
 
-                </children>
-               <children>
-                      <Label prefHeight="12.0" prefWidth="67.0" style="-fx-underline: true" text="Ditt kjøp: " />
-               </children>
-               </VBox>
-      
-                     <VBox fx:id="pbeskrivelse" prefHeight="136.0" prefWidth="215.0">
-                   <children>
-                </children>
-               <children>
-                      <Label style="-fx-underline: true" text="Produktbeskrivelse: " />
-               </children>
-               </VBox>
-            <VBox fx:id="pris" prefHeight="71.0" prefWidth="111.0">
-               <children>
-                      <Label prefHeight="7.0" prefWidth="35.0" style="-fx-underline: true" text="Pris: " />
-               </children>
-            </VBox>
-            <VBox prefHeight="71.0" prefWidth="118.0">
-               <children>
-                      <Label style="-fx-underline: true" text="Totalt: " />
-                  <Text fx:id="sumid" strokeType="OUTSIDE" strokeWidth="0.0" />
-               </children>
-            </VBox>
-         </children>
-         <opaqueInsets>
-            <Insets top="54.0" />
-         </opaqueInsets>
-      </HBox>
-      </children>
-   <padding>
-      <Insets bottom="30.0" />
-   </padding>
-   </AnchorPane>
+                        <Label prefHeight="22.0" prefWidth="73.0" style="-fx-underline: true" text="Konto: "/>
+                        <Text fx:id="billingid"/>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+        <HBox layoutX="19.0" layoutY="407.0" prefHeight="136.0" prefWidth="676.0" spacing="20.0">
+            <children>
+                <VBox fx:id="type" prefHeight="136.0" prefWidth="284.0">
+                    <children>
+
+                    </children>
+                    <children>
+                        <Label prefHeight="12.0" prefWidth="67.0" style="-fx-underline: true" text="Ditt kjøp: "/>
+                    </children>
+                </VBox>
+
+                <VBox fx:id="pbeskrivelse" prefHeight="136.0" prefWidth="215.0">
+                    <children>
+                    </children>
+                    <children>
+                        <Label style="-fx-underline: true" text="Produktbeskrivelse: "/>
+                    </children>
+                </VBox>
+                <VBox fx:id="pris" prefHeight="71.0" prefWidth="111.0">
+                    <children>
+                        <Label prefHeight="7.0" prefWidth="35.0" style="-fx-underline: true" text="Pris: "/>
+                    </children>
+                </VBox>
+                <VBox prefHeight="71.0" prefWidth="118.0">
+                    <children>
+                        <Label style="-fx-underline: true" text="Totalt: "/>
+                        <Text fx:id="sumid" strokeType="OUTSIDE" strokeWidth="0.0"/>
+                    </children>
+                </VBox>
+            </children>
+            <opaqueInsets>
+                <Insets top="54.0"/>
+            </opaqueInsets>
+        </HBox>
+    </children>
+    <padding>
+        <Insets bottom="30.0"/>
+    </padding>
+</AnchorPane>

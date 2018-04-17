@@ -2,6 +2,9 @@ package Entities;
 
 public class Address {
 
+    /**
+     * Entitetsbønner som representerer tabellen til Invoice
+     */
     private int addressId;
     private String streetNumber;
     private String streetName;
@@ -16,13 +19,25 @@ public class Address {
         this.postalTown = postalTown;
     }
 
-    public Address(){
+    public Address() {
 
     }
+
+    /**
+     * Getters for Address
+     *
+     * @return
+     */
 
     public int getAddressId() {
         return addressId;
     }
+
+    /**
+     * Mutatorer for address-bønnen
+     *
+     * @param addressId
+     */
 
     public void setAddressId(int addressId) {
         this.addressId = addressId;

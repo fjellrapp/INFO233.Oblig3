@@ -7,21 +7,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="parent" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" fx:controller="INFO233.Oblig3.GUI.EditInvoiceItemsController">
-   <children>
-      <Label layoutX="103.0" layoutY="55.0" text="Edit invoice items">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Label>
-      <TextField fx:id="id" editable="false" layoutX="178.0" layoutY="104.0" opacity="0.6" />
-      <TextField fx:id="productid" layoutX="178.0" layoutY="147.0" />
-      <Label layoutX="103.0" layoutY="109.0" text="Invoice (ID)" />
-      <Label layoutX="99.0" layoutY="152.0" text="Product (ID)" />
-      <Button layoutX="178.0" layoutY="200.0" mnemonicParsing="false" onAction="#editInvoiceItems" text="Submit" />
-      <Button layoutX="316.0" layoutY="200.0" mnemonicParsing="false" onAction="#onDisplay" text="Display current data" />
-      <Button layoutX="483.0" layoutY="200.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
-      <TextArea fx:id="systemText" layoutX="-1.0" layoutY="260.0" prefHeight="140.0" prefWidth="607.0" />
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="parent" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/9.0.4" fx:controller="INFO233.Oblig3.GUI.EditInvoiceItemsController">
+    <children>
+        <Label layoutX="103.0" layoutY="55.0" text="Edit invoice items">
+            <font>
+                <Font size="19.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="id" editable="false" layoutX="178.0" layoutY="104.0" opacity="0.6"/>
+        <TextField fx:id="productid" layoutX="178.0" layoutY="147.0" promptText="Insert productID"/>
+        <Label layoutX="103.0" layoutY="109.0" text="Invoice (ID)"/>
+        <Label layoutX="99.0" layoutY="152.0" text="Product (ID)"/>
+        <Button layoutX="178.0" layoutY="200.0" mnemonicParsing="false" onAction="#editInvoiceItems" text="Submit"/>
+        <Button layoutX="316.0" layoutY="200.0" mnemonicParsing="false" onAction="#onDisplay"
+                text="Display current data"/>
+        <Button layoutX="483.0" layoutY="200.0" mnemonicParsing="false" onAction="#onBack" text="Back"/>
+        <TextArea fx:id="systemText" layoutX="-1.0" layoutY="260.0" prefHeight="140.0" prefWidth="607.0">
+        </TextArea>
+    </children>
 </AnchorPane>

@@ -1,7 +1,6 @@
 package INFO233.Oblig3.SQLConnector;
 
 
-
 import java.io.File;
 import java.sql.*;
 
@@ -10,7 +9,7 @@ public class SQLConnectorFactory {
     private static File schema = new File("oblig3v1_database.sql");
     private static Connection connection = null;
 
-    public Connection connect(){
+    public Connection connect() {
 
 
         String url = "jdbc:sqlite:oblig3v1_database.db";
@@ -22,7 +21,7 @@ public class SQLConnectorFactory {
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
-        }else {
+        } else {
             try {
                 System.out.println("File didn't exists. Creating it from schema.");
                 connection = DriverManager.getConnection(url);
@@ -33,7 +32,6 @@ public class SQLConnectorFactory {
         }
         return connection;
     }
-
 
 
     public void disconnect() {
@@ -47,12 +45,12 @@ public class SQLConnectorFactory {
         }
     }
 
-    public boolean isConnected(){
+    public boolean isConnected() {
         return connection != null;
     }
 
 
-    }
+}
 
 
 

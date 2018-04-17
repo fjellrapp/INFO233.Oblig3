@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class EditCustomerController{
+public class EditCustomerController {
 
     @FXML
     private TextField id, name, address, phonenr, account;
@@ -28,24 +28,22 @@ public class EditCustomerController{
     private CustomerDAOImpl customerDAO = new CustomerDAOImpl();
 
 
-
-    public void setTextId(Integer inheritedID){
+    public void setTextId(Integer inheritedID) {
         id.setText(Integer.toString(inheritedID));
     }
 
 
-
     @FXML
-    public void editCustomer(){
+    public void editCustomer() {
 
         Customer customer = customerDAO.accessCustomer(Integer.parseInt(id.getText()));
-        if (!name.getText().trim().isEmpty()){
+        if (!name.getText().trim().isEmpty()) {
             customer.setCustomerName(name.getText());
-        }else if(!address.getText().trim().isEmpty()){
+        } else if (!address.getText().trim().isEmpty()) {
             customer.setAddress(Integer.parseInt(address.getText()));
-        }else if(!phonenr.getText().trim().isEmpty()){
+        } else if (!phonenr.getText().trim().isEmpty()) {
             customer.setPhoneNumber(phonenr.getText());
-        }else if(!account.getText().trim().isEmpty()){
+        } else if (!account.getText().trim().isEmpty()) {
             customer.setBillingAccount(account.getText());
         }
 
@@ -53,7 +51,7 @@ public class EditCustomerController{
     }
 
     @FXML
-    public void displayCustomer(){
+    public void displayCustomer() {
         try {
             Customer c = customerDAO.accessCustomer(Integer.parseInt(id.getText()));
 
@@ -64,19 +62,19 @@ public class EditCustomerController{
                             "Phonenr: " + c.getPhoneNumber() + " \n" +
                             "Account: " + c.getBillingAccount() + " \n"
             );
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-        }
+    }
 
-      @FXML
-    public void onBack(){
+    @FXML
+    public void onBack() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditCustomerPrestageFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

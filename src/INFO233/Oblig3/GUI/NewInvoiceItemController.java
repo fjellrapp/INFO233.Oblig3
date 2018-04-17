@@ -29,7 +29,7 @@ public class NewInvoiceItemController {
 
     // TODO:
 
-    public InvoiceItems newInvoiceItem(){
+    public InvoiceItems newInvoiceItem() {
         InvoiceItems invoiceItems = new InvoiceItems();
         invoiceItems.setInvoice(Integer.parseInt(invoiceid.getText()));
         invoiceItems.setProduct(Integer.parseInt(productid.getText()));
@@ -37,23 +37,21 @@ public class NewInvoiceItemController {
 
     }
 
-    public void buttonAdd(){
+    public void buttonAdd() {
         invoiceItemsDAO.addInvoiceItems(newInvoiceItem());
-        systemText.setText("Product with ProductID " + newInvoiceItem().getProduct() + " added and InvoiceID " + newInvoiceItem().getInvoice() + " added" );
+        systemText.setText("Product with ProductID " + newInvoiceItem().getProduct() + " added and InvoiceID " + newInvoiceItem().getInvoice() + " added");
     }
 
-    public void buttonBack(){
+    public void buttonBack() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 
 
 }

@@ -31,7 +31,6 @@ public class InvoiceController implements Initializable {
     List<InvoiceItems> invoiceItemsList = invoiceItemsDAO.getAllInvoiceItems();
 
 
-
     private int currentIndex;
 
     @FXML
@@ -62,7 +61,6 @@ public class InvoiceController implements Initializable {
         Invoice invoice = invoiceDAO.accessInvoice(invoices.getCustomer());
 
 
-
         navnId.setText(customer.getCustomerName());
         addresseId.setText(address.getStreetName() + " " + address.getStreetNumber());
         postId.setText(address.getPostalCode() + " " + address.getPostalTown());
@@ -76,53 +74,53 @@ public class InvoiceController implements Initializable {
 
     }
 
-     private void itemsDisplay(){
+    private void itemsDisplay() {
 
         float sumItems = 0;
 
-            for (InvoiceItems item : invoiceItemsList) {
-                Product product = productDAO.accessProduct(item.getProduct());
-                Text itemName = new Text(product.getProductName());
-                Text itemPrice = new Text(String.valueOf(product.getPrice()));
-                Text itemDescription = new Text(product.getDescription());
+        for (InvoiceItems item : invoiceItemsList) {
 
-                type.getChildren().add(itemName);
-                pris.getChildren().add(itemPrice);
-                pbeskrivelse.getChildren().add(itemDescription);
+            Product product = productDAO.accessProduct(item.getProduct());
+            Text itemName = new Text(product.getProductName());
+            Text itemPrice = new Text(String.valueOf(product.getPrice()));
+            Text itemDescription = new Text(product.getDescription());
 
-                sumItems += product.getPrice();
-            }
-            sumid.setText(String.valueOf(sumItems));
+            type.getChildren().add(itemName);
+            pris.getChildren().add(itemPrice);
+            pbeskrivelse.getChildren().add(itemDescription);
+
+            sumItems += product.getPrice();
         }
+        sumid.setText(String.valueOf(sumItems));
+    }
 
 
-        public void displayInvoice(int index){
-            currentIndex = index;
-            insertInfoFromDb(invoiceList.get(currentIndex));
-        }
+    public void displayInvoice(int index) {
+        currentIndex = index;
+        insertInfoFromDb(invoiceList.get(currentIndex));
+    }
 
-        public void onNext() {
+    public void onNext() {
         if (currentIndex == 0) {
             displayInvoice(currentIndex + 1);
-        }else {
+        } else {
             displayInvoice(currentIndex++);
         }
-        }
+    }
 
 
-
-        public void onBack(){
+    public void onBack() {
 
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
-        }
+    }
 }
 
 

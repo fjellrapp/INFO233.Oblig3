@@ -27,33 +27,29 @@ public class NewCategoryController {
     private CategoryDAOImpl categoryDAO = new CategoryDAOImpl();
 
 
-
-
-
-    public Category newCategory(){
+    public Category newCategory() {
         Category category = new Category();
         category.setCategoryName(nameid.getText());
         category.setCategoryId(Integer.parseInt(categoryid.getText()));
         return category;
     }
 
-    public void onInsertButton(){
+    public void onInsertButton() {
         categoryDAO.addCategory(newCategory());
         systemText.setText(newCategory().getCategoryName() + " inserted");
 
     }
 
-    public void onBackButton(){
-            try {
-                AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));
-                Scene scene = new Scene(anchor);
-                Stage stage = (Stage) parent.getScene().getWindow();
-                stage.setScene(scene);
-            }catch (IOException e){
-                e.printStackTrace();
-            }
+    public void onBackButton() {
+        try {
+            AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));
+            Scene scene = new Scene(anchor);
+            Stage stage = (Stage) parent.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
 
 
 }

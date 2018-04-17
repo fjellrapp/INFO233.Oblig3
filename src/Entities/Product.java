@@ -2,6 +2,10 @@ package Entities;
 
 public class Product {
 
+    /**
+     * Entitetsbønne med getters og setters for tabellen product.
+     */
+
     private int productId;
     private String productName;
     private String description;
@@ -16,7 +20,7 @@ public class Product {
         this.category = category;
     }
 
-    public Product(){
+    public Product() {
 
     }
 

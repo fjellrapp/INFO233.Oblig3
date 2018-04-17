@@ -28,22 +28,23 @@ public class EditInvoiceController {
 
     private InvoiceDAOImpl invoiceDAO = new InvoiceDAOImpl();
 
-    public void setId(Integer inheritedID){
+    public void setId(Integer inheritedID) {
         invoiceid.setText(Integer.toString(inheritedID));
     }
 
-    public void editInvoice(){
+    public void editInvoice() {
         Invoice invoice = invoiceDAO.accessInvoice(Integer.parseInt(invoiceid.getText()));
         if (!customer.getText().trim().isEmpty()) {
             invoice.setCustomer(Integer.parseInt(customer.getText()));
-        }if(!date.getText().trim().isEmpty()){
+        }
+        if (!date.getText().trim().isEmpty()) {
             invoice.setDato(date.getText());
         }
         invoiceDAO.editInvoice(invoice);
     }
 
 
-    public void onDisplay(){
+    public void onDisplay() {
 
         try {
             Invoice i = invoiceDAO.accessInvoice(Integer.parseInt(invoiceid.getText()));
@@ -54,7 +55,7 @@ public class EditInvoiceController {
                             "CustomerID: " + i.getCustomer() + " \n" +
                             "Date " + i.getDato() + " \n"
             );
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
     }

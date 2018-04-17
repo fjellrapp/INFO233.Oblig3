@@ -27,7 +27,7 @@ public class NewProductController {
     private Parent parent;
 
 
-    public Product newProduct(){
+    public Product newProduct() {
         Product product = new Product();
 
         product.setProductId(Integer.parseInt(productid.getText()));
@@ -39,19 +39,19 @@ public class NewProductController {
     }
 
     @FXML
-    public void addProduct(){
+    public void addProduct() {
         productDAO.addProduct(newProduct());
         systemText.setText(newProduct().getProductName() + " was added");
     }
 
     @FXML
-    public void returnToMain(){
+    public void returnToMain() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

@@ -7,40 +7,42 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="parent" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="INFO233.Oblig3.GUI.NewCustomerController">
-   <children>
-      <Label layoutX="51.0" layoutY="35.0" text="Insert to Customer">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="317.0" layoutY="35.0" text="Insert to Address">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <TextField fx:id="newId" layoutX="89.0" layoutY="63.0" promptText="insert ID" />
-      <TextField fx:id="newnameId" layoutX="89.0" layoutY="100.0" promptText="Insert Name" />
-      <TextField fx:id="newAddressId" layoutX="89.0" layoutY="137.0" promptText="Insert Address" />
-      <TextField fx:id="newPhonenrId" layoutX="89.0" layoutY="173.0" promptText="Insert Phonenr" />
-      <TextField fx:id="newAccountnoId" layoutX="89.0" layoutY="213.0" promptText="Insert Accountno" />
-      <Label layoutX="15.0" layoutY="68.0" text="ID" />
-      <Label layoutX="15.0" layoutY="105.0" text="Name" />
-      <Label layoutX="15.0" layoutY="142.0" text="AddressID" />
-      <Label layoutX="15.0" layoutY="178.0" text="Phonenr" />
-      <Label layoutX="14.0" layoutY="218.0" text="Accountno" />
-      <Button layoutX="51.0" layoutY="254.0" mnemonicParsing="false" onAction="#createButtonPressed" text="Create" />
-      <Label layoutX="327.0" layoutY="68.0" text="AddressID" />
-      <Label layoutX="326.0" layoutY="105.0" text="StreetNo" />
-      <Label layoutX="324.0" layoutY="142.0" text="Streetname" />
-      <Label layoutX="324.0" layoutY="178.0" text="PostalCode" />
-      <Label layoutX="325.0" layoutY="218.0" text="PostalTown" />
-      <TextField fx:id="addressid" layoutX="412.0" layoutY="63.0" promptText="Insert AddressID" />
-      <TextField fx:id="streetnoid" layoutX="412.0" layoutY="100.0" promptText="Insert Streetno" />
-      <TextField fx:id="streetnameid" layoutX="412.0" layoutY="137.0" promptText="Insert Streetname" />
-      <TextField fx:id="postalcodeId" layoutX="412.0" layoutY="173.0" promptText="Insert PostalCode" />
-      <TextField fx:id="postaltownid" layoutX="412.0" layoutY="213.0" promptText="Insert PostalTown" />
-      <Button layoutX="496.0" layoutY="254.0" mnemonicParsing="false" onAction="#returnToMain" text="Back" />
-      <TextArea fx:id="resultArea" editable="false" layoutX="33.0" layoutY="300.0" prefHeight="77.0" prefWidth="204.0" wrapText="true" />
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="parent" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/9.0.4" fx:controller="INFO233.Oblig3.GUI.NewCustomerController">
+    <children>
+        <Label layoutX="51.0" layoutY="35.0" text="Insert to Customer">
+            <font>
+                <Font name="System Bold" size="16.0"/>
+            </font>
+        </Label>
+        <Label layoutX="317.0" layoutY="35.0" text="Insert to Address">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="newId" layoutX="89.0" layoutY="63.0" promptText="insert ID"/>
+        <TextField fx:id="newnameId" layoutX="89.0" layoutY="100.0" promptText="Insert Name"/>
+        <TextField fx:id="newAddressId" layoutX="89.0" layoutY="137.0" promptText="Insert Address"/>
+        <TextField fx:id="newPhonenrId" layoutX="89.0" layoutY="173.0" promptText="Insert Phonenr"/>
+        <TextField fx:id="newAccountnoId" layoutX="89.0" layoutY="213.0" promptText="Insert Accountno"/>
+        <Label layoutX="15.0" layoutY="68.0" text="ID"/>
+        <Label layoutX="15.0" layoutY="105.0" text="Name"/>
+        <Label layoutX="15.0" layoutY="142.0" text="AddressID"/>
+        <Label layoutX="15.0" layoutY="178.0" text="Phonenr"/>
+        <Label layoutX="14.0" layoutY="218.0" text="Accountno"/>
+        <Button layoutX="51.0" layoutY="254.0" mnemonicParsing="false" onAction="#createButtonPressed" text="Create"/>
+        <Label layoutX="327.0" layoutY="68.0" text="AddressID"/>
+        <Label layoutX="326.0" layoutY="105.0" text="StreetNo"/>
+        <Label layoutX="324.0" layoutY="142.0" text="Streetname"/>
+        <Label layoutX="324.0" layoutY="178.0" text="PostalCode"/>
+        <Label layoutX="325.0" layoutY="218.0" text="PostalTown"/>
+        <TextField fx:id="addressid" layoutX="412.0" layoutY="63.0" promptText="Insert AddressID"/>
+        <TextField fx:id="streetnoid" layoutX="412.0" layoutY="100.0" promptText="Insert Streetno"/>
+        <TextField fx:id="streetnameid" layoutX="412.0" layoutY="137.0" promptText="Insert Streetname"/>
+        <TextField fx:id="postalcodeId" layoutX="412.0" layoutY="173.0" promptText="Insert PostalCode"/>
+        <TextField fx:id="postaltownid" layoutX="412.0" layoutY="213.0" promptText="Insert PostalTown"/>
+        <Button layoutX="496.0" layoutY="254.0" mnemonicParsing="false" onAction="#returnToMain" text="Back"/>
+        <TextArea fx:id="resultArea" editable="false" layoutX="33.0" layoutY="300.0" prefHeight="77.0" prefWidth="204.0"
+                  wrapText="true"/>
+    </children>
 </AnchorPane>

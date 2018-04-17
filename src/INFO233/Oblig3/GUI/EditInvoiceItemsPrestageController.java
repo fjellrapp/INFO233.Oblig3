@@ -1,11 +1,14 @@
 package INFO233.Oblig3.GUI;
 
+import DAO.InvoiceItemsDAOImpl;
+import Entities.InvoiceItems;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,29 +21,44 @@ public class EditInvoiceItemsPrestageController {
     @FXML
     private Parent parent;
 
-    public void onNext(){
+    @FXML
+    private Text alertid;
+
+    private InvoiceItemsDAOImpl invoiceItemsDAO = new InvoiceItemsDAOImpl();
+
+    private boolean doesIDExist() {
+        InvoiceItems invoiceItems = invoiceItemsDAO.accessInvoiceItems(Integer.parseInt(id.getText()));
+        return invoiceItems.getProduct() >= 1;
+    }
+
+    public void onNext() {
         int collectedId = Integer.parseInt(id.getText());
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("EditInvoiceItemsFXML.fxml"));
-            AnchorPane anchor = loader.load();
-            EditInvoiceItemsController controller = loader.getController();
-            controller.setId(collectedId);
-            Scene scene = new Scene(anchor);
-            Stage stage = (Stage) parent.getScene().getWindow();
-            stage.setScene(scene);
-        }catch (IOException e){
-            e.printStackTrace();
+
+        if (!doesIDExist()) {
+            alertid.setText("Not a valid ID. Create a new one or input a valid ID");
+        } else {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("EditInvoiceItemsFXML.fxml"));
+                AnchorPane anchor = loader.load();
+                EditInvoiceItemsController controller = loader.getController();
+                controller.setId(collectedId);
+                Scene scene = new Scene(anchor);
+                Stage stage = (Stage) parent.getScene().getWindow();
+                stage.setScene(scene);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public void onBack(){
+    public void onBack() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

@@ -6,9 +6,14 @@ public class Invoice {
     private int customer;
     private String dato;
 
+    /**
+     * Getters og setters som representeter tabellen for Invoice
+     */
+
     public int getInvoiceId() {
         return invoiceId;
     }
+
 
     public void setInvoiceId(int invoiceId) {
         this.invoiceId = invoiceId;

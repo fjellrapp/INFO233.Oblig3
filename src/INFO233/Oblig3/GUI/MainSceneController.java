@@ -15,152 +15,150 @@ public class MainSceneController {
     private Parent parent;
 
     @FXML
-    public void onNewCustomer(){
+    public void onNewCustomer() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("NewCustomerFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    public void onShowInvoice(){
+    public void onShowInvoice() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("InvoiceFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    public void onNewInvoice(){
+    public void onNewInvoice() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("NewInvoiceFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    public void onNewCategory(){
+    public void onNewCategory() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("NewCategoryFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    public void onNewInvoiceItem(){
+    public void onNewInvoiceItem() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("NewInvoiceItemFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    public void onNewProduct(){
+    public void onNewProduct() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("NewProductFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    public void onEditCustomer(){
+    public void onEditCustomer() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditCustomerPrestageFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    public void onEditAddress(){
+    public void onEditAddress() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditAddressPrestageFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-
     @FXML
-    public void onEditCategory(){
+    public void onEditCategory() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditCategoryPrestageFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    public void onEditInvoice(){
+    public void onEditInvoice() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditInvoicePrestageFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    public void onEditProduct(){
+    public void onEditProduct() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditProductPrestageFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    public void onEditInvoiceItem(){
+    public void onEditInvoiceItem() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditInvoiceItemsPrestageFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
-
 
 
 }

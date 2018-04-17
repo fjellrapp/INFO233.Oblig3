@@ -48,16 +48,16 @@ public class NewCustomerController {
 
 
     @FXML
-    public void createButtonPressed(){
+    public void createButtonPressed() {
         addressDAO.addAddress(newAddress());
         customerDAO.addCustomer(newCustomer());
         resultArea.setText("Customer " + newCustomer().getCustomerName() + " Added." +
-        "With address " + newAddress().getStreetName() + " " + newAddress().getStreetNumber());
+                "With address " + newAddress().getStreetName() + " " + newAddress().getStreetNumber());
 
     }
 
-@FXML
-    public Customer newCustomer(){
+    @FXML
+    public Customer newCustomer() {
         Customer customer = new Customer();
         customer.setCustomerId(Integer.parseInt(newId.getText()));
         customer.setBillingAccount(newAccountnoId.getText());
@@ -68,7 +68,7 @@ public class NewCustomerController {
     }
 
     @FXML
-    public Address newAddress(){
+    public Address newAddress() {
         Address address = new Address();
         address.setPostalTown(postaltownid.getText());
         address.setPostalCode(postalcodeId.getText());
@@ -79,13 +79,13 @@ public class NewCustomerController {
     }
 
     @FXML
-    public void returnToMain(){
+    public void returnToMain() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

@@ -38,29 +38,29 @@ public class EditCategoryController {
         categoryDAO.editCategory(category);
     }
 
-        public void onDisplay () {
-            try {
-                Category c = categoryDAO.accessCategory(Integer.parseInt(categoryid.getText()));
-                systemText.setText(
-                        "Currently registered data in this category: " + " \n" +
-                                "CategoryID: " + c.getCategoryId() + " \n" +
-                                "Category name: " + c.getCategoryName() + " \n"
-                );
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
-            }
-        }
-
-        public void onBack () {
-            try {
-                AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditCategoryPrestageFXML.fxml"));
-                Scene scene = new Scene(anchor);
-                Stage stage = (Stage) parent.getScene().getWindow();
-                stage.setScene(scene);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    public void onDisplay() {
+        try {
+            Category c = categoryDAO.accessCategory(Integer.parseInt(categoryid.getText()));
+            systemText.setText(
+                    "Currently registered data in this category: " + " \n" +
+                            "CategoryID: " + c.getCategoryId() + " \n" +
+                            "Category name: " + c.getCategoryName() + " \n"
+            );
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
         }
     }
+
+    public void onBack() {
+        try {
+            AnchorPane anchor = FXMLLoader.load(getClass().getResource("EditCategoryPrestageFXML.fxml"));
+            Scene scene = new Scene(anchor);
+            Stage stage = (Stage) parent.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
 
 

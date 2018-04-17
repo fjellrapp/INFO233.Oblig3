@@ -1,12 +1,9 @@
 package DAO;
 
-import Entities.Customer;
-import Entities.Invoice;
 import Entities.InvoiceItems;
 import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,7 +11,13 @@ public class InvoiceItemsDAOImpl {
 
     SQLConnectorFactory connector = new SQLConnectorFactory();
 
-    public InvoiceItems accessInvoiceItems(int id){
+    /**
+     * Gir tilgang på en fakturagjenstand basert på ID
+     *
+     * @param id IDen (InvoiceID) til objektet.
+     * @return objektet
+     */
+    public InvoiceItems accessInvoiceItems(int id) {
 
 
         Connection conn = connector.connect();
@@ -22,88 +25,110 @@ public class InvoiceItemsDAOImpl {
         String SQL = "SELECT * FROM invoice_items " +
                 "WHERE invoice = " + id + ";";
 
-        try{
+        try {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL);
-            if (resultSet.next()){
+            if (resultSet.next()) {
                 items.setInvoice(resultSet.getInt("invoice"));
                 items.setProduct(resultSet.getInt("product"));
 
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             connector.disconnect();
         }
         return items;
     }
 
-    public void addInvoiceItems(InvoiceItems items){
+    /**
+     * Legger til en InvoiceItems-objekt i databasen
+     *
+     * @param items, InvoiceItem objektet.
+     */
+    public void addInvoiceItems(InvoiceItems items) {
         Connection conn = connector.connect();
-       try{
-           PreparedStatement preparedStatement = conn.prepareStatement(
-                   "INSERT INTO invoice_items (invoice, product) VALUES " +
-                           "(?,?);"
-           );
-           preparedStatement.setInt(1, items.getInvoice());
-           preparedStatement.setInt(2, items.getProduct());
-           preparedStatement.execute();
-       }catch (SQLException e){
-           e.printStackTrace();
-       }finally {
-           connector.disconnect();
-       }
-    }
-
-    public void deleteInvoiceItems(int id){
-        Connection conn = connector.connect();
-        try{
+        try {
             PreparedStatement preparedStatement = conn.prepareStatement(
-                    "DELETE FROM invoice_items WHERE invoice = " + id + ";"
+                    "INSERT INTO invoice_items (invoice, product) VALUES " +
+                            "(?,?);"
             );
+            preparedStatement.setInt(1, items.getInvoice());
+            preparedStatement.setInt(2, items.getProduct());
             preparedStatement.execute();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             connector.disconnect();
         }
     }
 
-    public List<InvoiceItems> getAllInvoiceItems(){
+    /**
+     * Sletter et objekt fra databasen basert på ID
+     *
+     * @param id IDen til feltet som skal slettes.
+     */
+
+    public void deleteInvoiceItems(int id) {
+        Connection conn = connector.connect();
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(
+                    "DELETE FROM invoice_items WHERE invoice = " + id + ";"
+            );
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            connector.disconnect();
+        }
+    }
+
+    /**
+     * Henter ut en liste av alle invoiceItems
+     *
+     * @return listen med objekter.
+     */
+
+    public List<InvoiceItems> getAllInvoiceItems() {
 
         Connection conn = connector.connect();
         List<InvoiceItems> all = new LinkedList<>();
 
         String query = "SELECT * FROM invoice_items;";
 
-        try{
+        try {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 InvoiceItems invoiceItems = new InvoiceItems();
                 invoiceItems.setInvoice(resultSet.getInt("invoice"));
                 invoiceItems.setProduct(resultSet.getInt("product"));
                 all.add(invoiceItems);
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             connector.disconnect();
         }
         return all;
     }
 
-    public void editInvoiceItems(InvoiceItems invoiceItems){
+    /**
+     * Gjør det mulig å endre på et objekt.
+     *
+     * @param invoiceItems objektet som skal endres.
+     */
+    public void editInvoiceItems(InvoiceItems invoiceItems) {
         Connection conn = connector.connect();
-        try{
+        try {
             PreparedStatement preparedStatement = conn.prepareStatement("UPDATE invoice_items SET " +
-            "product = ? "+
-            "WHERE invoice = " + invoiceItems.getInvoice() + ";");
+                    "product = ? " +
+                    "WHERE invoice = " + invoiceItems.getInvoice() + ";");
             preparedStatement.setInt(1, invoiceItems.getProduct());
             preparedStatement.execute();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             connector.disconnect();
         }
 

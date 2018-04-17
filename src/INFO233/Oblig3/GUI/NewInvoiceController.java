@@ -38,11 +38,11 @@ public class NewInvoiceController {
     private List<Customer> list = customerDAO.getAllCustomers();
 
 
-    public void createButtonPressed(){
+    public void createButtonPressed() {
         invoiceDAO.addInvoice(newInvoice());
     }
 
-    public Invoice newInvoice(){
+    public Invoice newInvoice() {
         Invoice invoice = new Invoice();
         invoice.setInvoiceId(Integer.parseInt(newid.getText()));
         invoice.setCustomer(Integer.parseInt(newCustomer.getText()));
@@ -52,13 +52,13 @@ public class NewInvoiceController {
 
     }
 
-    public void returnToMain(){
+    public void returnToMain() {
         try {
             AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));
             Scene scene = new Scene(anchor);
             Stage stage = (Stage) parent.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

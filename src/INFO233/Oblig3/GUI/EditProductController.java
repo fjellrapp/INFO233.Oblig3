@@ -28,7 +28,7 @@ public class EditProductController {
 
     private ProductDAOImpl productDAO = new ProductDAOImpl();
 
-    public void setId(Integer inheritedID){
+    public void setId(Integer inheritedID) {
         productid.setText(Integer.toString(inheritedID));
     }
 
@@ -36,16 +36,18 @@ public class EditProductController {
         Product product = productDAO.accessProduct(Integer.parseInt(productid.getText()));
         if (!name.getText().trim().isEmpty()) {
             product.setProductName(name.getText());
-        }if(!description.getText().trim().isEmpty()){
+        }
+        if (!description.getText().trim().isEmpty()) {
             product.setDescription(description.getText());
-        }if(!price.getText().trim().isEmpty()){
+        }
+        if (!price.getText().trim().isEmpty()) {
             product.setPrice(Float.parseFloat(price.getText()));
         }
         productDAO.editProduct(product);
     }
 
 
-    public void onDisplay(){
+    public void onDisplay() {
 
         try {
             Product p = productDAO.accessProduct(Integer.parseInt(productid.getText()));
@@ -58,7 +60,7 @@ public class EditProductController {
                             "Price: " + p.getPrice() + " \n" +
                             "Category: " + p.getCategory()
             );
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
     }

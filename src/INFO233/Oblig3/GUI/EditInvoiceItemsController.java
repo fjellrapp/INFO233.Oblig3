@@ -1,8 +1,6 @@
 package INFO233.Oblig3.GUI;
 
-import DAO.InvoiceDAOImpl;
 import DAO.InvoiceItemsDAOImpl;
-import Entities.Invoice;
 import Entities.InvoiceItems;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,9 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
 
 public class EditInvoiceItemsController {
 
@@ -21,18 +22,24 @@ public class EditInvoiceItemsController {
     private TextField id, productid;
 
     @FXML
+    private Text producttext;
+
+    @FXML
     private TextArea systemText;
+
+    @FXML
+    private HBox productBox;
 
     @FXML
     private Parent parent;
 
     private InvoiceItemsDAOImpl invoiceItemsDAO = new InvoiceItemsDAOImpl();
 
-    public void setId(Integer inheritedID){
+    public void setId(Integer inheritedID) {
         id.setText(Integer.toString(inheritedID));
     }
 
-    public void editInvoiceItems(){
+    public void editInvoiceItems() {
         InvoiceItems invoiceItems = invoiceItemsDAO.accessInvoiceItems(Integer.parseInt(id.getText()));
         if (!productid.getText().trim().isEmpty()) {
             invoiceItems.setProduct(Integer.parseInt(productid.getText()));
@@ -41,18 +48,17 @@ public class EditInvoiceItemsController {
     }
 
 
-    public void onDisplay(){
+    public void onDisplay() {
 
         try {
-            InvoiceItems i = invoiceItemsDAO.accessInvoiceItems(Integer.parseInt(id.getText()));
-
+            InvoiceItems in = invoiceItemsDAO.accessInvoiceItems(Integer.parseInt(id.getText()));
             systemText.setText(
                     "Currently registered data on this invoice: " + " \n" +
-                            "Invoice ID: " + i.getInvoice() + " \n" +
-                            "Product ID: " + i.getProduct() + " \n"
-
+                            "Invoice ID: " + in.getInvoice() + " \n" +
+                            "Products: " + in.getProduct()
             );
-        }catch (NumberFormatException e){
+
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
     }

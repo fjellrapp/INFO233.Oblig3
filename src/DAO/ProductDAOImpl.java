@@ -5,15 +5,20 @@ import Entities.Product;
 import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ResourceBundle;
+
 
 public class ProductDAOImpl {
 
     SQLConnectorFactory connector = new SQLConnectorFactory();
 
+    /**
+     * Gir tilgang til et product basert på dens ID
+     *
+     * @param id IDen til produktet
+     * @return Product-objektet
+     */
     public Product accessProduct(int id) {
         Connection conn = connector.connect();
         Product product = new Product();
@@ -38,6 +43,11 @@ public class ProductDAOImpl {
         return product;
     }
 
+    /**
+     * Legger til et produkt til databasen
+     *
+     * @param product produkt-objektet som skal inn
+     */
     public void addProduct(Product product) {
         Connection conn = connector.connect();
 
@@ -60,6 +70,12 @@ public class ProductDAOImpl {
 
     }
 
+    /**
+     * Sletter et produkt fra databasen basert på dens ID.
+     *
+     * @param id Produktet ID
+     */
+
     public void deleteProduct(int id) {
         Connection conn = connector.connect();
         try {
@@ -75,6 +91,11 @@ public class ProductDAOImpl {
 
     }
 
+    /**
+     * Returnerer en liste av alle produkter i en database
+     *
+     * @return Listen med produkter.
+     */
     public List<Product> getAllProducts() {
 
         Connection conn = connector.connect();
@@ -102,28 +123,34 @@ public class ProductDAOImpl {
         return all;
     }
 
-    public void editProduct(Product product){
+    /**
+     * Gjør det mulig å endre et produkts verdier
+     *
+     * @param product Produktobjektet.
+     */
+
+    public void editProduct(Product product) {
         Connection conn = connector.connect();
-        try{
+        try {
             PreparedStatement preparedStatement = conn.prepareStatement("UPDATE product SET " +
-            "product_name = ?, "+
-            "description = ?, " +
-            "price = ?, " +
-            "category = ? "+
-            "WHERE product_id = " + product.getProductId() + ";");
+                    "product_name = ?, " +
+                    "description = ?, " +
+                    "price = ?, " +
+                    "category = ? " +
+                    "WHERE product_id = " + product.getProductId() + ";");
             preparedStatement.setString(1, product.getProductName());
             preparedStatement.setString(2, product.getDescription());
             preparedStatement.setFloat(3, product.getPrice());
             preparedStatement.setInt(4, product.getCategory());
             preparedStatement.execute();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             connector.disconnect();
         }
     }
 
-  }
+}
 
 
 

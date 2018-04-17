@@ -12,56 +12,57 @@ import java.util.Scanner;
 public class SQLSchemaReader {
 
 
-    /** Tar inn en kobling og et schema. Går deretter gjennom schemafilen og utfører
+    /**
+     * Tar inn en kobling og et schema. Går deretter gjennom schemafilen og utfører
      * spørringene.
      *
      * @param connection koblingen som skal inn
-     * @param file schema-filen som skal inn
+     * @param file       schema-filen som skal inn
      */
 
     public static void intitializeDB(Connection connection, File file) {
 
         InputStream fileIn = null;
 
-            try {
-                fileIn = new FileInputStream(file);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            Scanner scanner = new Scanner(fileIn);
-            scanner.useDelimiter(";");
-
-            try {
-                Statement statement = connection.createStatement();
-
-                while (scanner.hasNext()) {
-                    String line = scanner.next();
-
-                    if((line.startsWith("/*!") && line.endsWith("*/"))){
-                        int i = line.indexOf(' ');
-                        line = line.substring(i + 1, line.length() - " */".length());
-                    }
-                    if (line.trim().length() > 0){
-                        statement.execute(line);
-                    }
-                }
-                statement.close();
-
-            } catch (SQLException s) {
-                s.printStackTrace();
-            }
+        try {
+            fileIn = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
+        Scanner scanner = new Scanner(fileIn);
+        scanner.useDelimiter(";");
+
+        try {
+            Statement statement = connection.createStatement();
+
+            while (scanner.hasNext()) {
+                String line = scanner.next();
+
+                if ((line.startsWith("/*!") && line.endsWith("*/"))) {
+                    int i = line.indexOf(' ');
+                    line = line.substring(i + 1, line.length() - " */".length());
+                }
+                if (line.trim().length() > 0) {
+                    statement.execute(line);
+                }
+            }
+            statement.close();
+
+        } catch (SQLException s) {
+            s.printStackTrace();
+        }
+    }
 
 
     /**
      * Sjekker om filen allerede eksisterer.
+     *
      * @return true eller false
      */
-    public static Boolean fileExists(){
+    public static Boolean fileExists() {
         File file = new File("oblig3v1_database.db");
         return file.exists() && !file.isDirectory();
     }
-
 
 
 }

@@ -17,11 +17,11 @@ public class InvoiceItemsDAOImpl {
      * @param id IDen (InvoiceID) til objektet.
      * @return objektet
      */
-    public InvoiceItems accessInvoiceItems(int id) {
+    public List<InvoiceItems> getAllInvoiceItems(int id) {
 
 
         Connection conn = connector.connect();
-        InvoiceItems items = new InvoiceItems();
+        List<InvoiceItems> items = new LinkedList<>();
         String SQL = "SELECT * FROM invoice_items " +
                 "WHERE invoice = " + id + ";";
 
@@ -29,8 +29,10 @@ public class InvoiceItemsDAOImpl {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL);
             if (resultSet.next()) {
-                items.setInvoice(resultSet.getInt("invoice"));
-                items.setProduct(resultSet.getInt("product"));
+                InvoiceItems invoiceItems = new InvoiceItems();
+                invoiceItems.setInvoice(resultSet.getInt("invoice"));
+                invoiceItems.setProduct(resultSet.getInt("product"));
+                items.add(invoiceItems);
 
             }
         } catch (SQLException e) {
@@ -39,6 +41,28 @@ public class InvoiceItemsDAOImpl {
             connector.disconnect();
         }
         return items;
+    }
+
+    public InvoiceItems accessInvoiceItems(int id) {
+
+
+        Connection conn = connector.connect();
+        String SQL = "SELECT * FROM invoice_items " +
+                "WHERE invoice = " + id + ";";
+        InvoiceItems invoiceItems = new InvoiceItems();
+        try {
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(SQL);
+            if (resultSet.next()) {
+                invoiceItems.setInvoice(resultSet.getInt("invoice"));
+                invoiceItems.setProduct(resultSet.getInt("product"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            connector.disconnect();
+        }
+        return invoiceItems;
     }
 
     /**
@@ -83,35 +107,6 @@ public class InvoiceItemsDAOImpl {
         }
     }
 
-    /**
-     * Henter ut en liste av alle invoiceItems
-     *
-     * @return listen med objekter.
-     */
-
-    public List<InvoiceItems> getAllInvoiceItems() {
-
-        Connection conn = connector.connect();
-        List<InvoiceItems> all = new LinkedList<>();
-
-        String query = "SELECT * FROM invoice_items;";
-
-        try {
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                InvoiceItems invoiceItems = new InvoiceItems();
-                invoiceItems.setInvoice(resultSet.getInt("invoice"));
-                invoiceItems.setProduct(resultSet.getInt("product"));
-                all.add(invoiceItems);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            connector.disconnect();
-        }
-        return all;
-    }
 
     /**
      * Gjør det mulig å endre på et objekt.

@@ -91,26 +91,31 @@
         </VBox>
         <HBox layoutX="19.0" layoutY="407.0" prefHeight="136.0" prefWidth="676.0" spacing="20.0">
             <children>
+                <VBox prefHeight="136.0" prefWidth="284.0">
+                <children>
+                    <Label prefHeight="12.0" prefWidth="67.0" style="-fx-underline: true" text="Ditt kjøp: " />
+                </children>
                 <VBox fx:id="type" prefHeight="136.0" prefWidth="284.0">
                     <children>
-
-                    </children>
-                    <children>
-                        <Label prefHeight="12.0" prefWidth="67.0" style="-fx-underline: true" text="Ditt kjøp: " />
                     </children>
                 </VBox>
+                </VBox>
 
+                <VBox prefHeight="136.0" prefWidth="215.0">
+                <children>
+                    <Label style="-fx-underline: true" text="Produktbeskrivelse: " />
+                </children>
                 <VBox fx:id="pbeskrivelse" prefHeight="136.0" prefWidth="215.0">
                     <children>
                     </children>
-                    <children>
-                        <Label style="-fx-underline: true" text="Produktbeskrivelse: " />
-                    </children>
                 </VBox>
+                </VBox>
+                <VBox prefHeight="71.0" prefWidth="111.0">
+                    <Label prefHeight="7.0" prefWidth="35.0" style="-fx-underline: true" text="Pris: " />
                 <VBox fx:id="pris" prefHeight="71.0" prefWidth="111.0">
                     <children>
-                        <Label prefHeight="7.0" prefWidth="35.0" style="-fx-underline: true" text="Pris: " />
                     </children>
+                </VBox>
                 </VBox>
                 <VBox prefHeight="71.0" prefWidth="118.0">
                     <children>

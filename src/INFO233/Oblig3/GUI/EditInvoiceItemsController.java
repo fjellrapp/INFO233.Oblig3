@@ -57,6 +57,7 @@ public class EditInvoiceItemsController {
         }
     }
 
+
     @FXML
     public void onBack() {
         try {

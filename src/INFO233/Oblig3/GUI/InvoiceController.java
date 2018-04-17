@@ -28,7 +28,7 @@ public class InvoiceController implements Initializable {
     ProductDAOImpl productDAO = new ProductDAOImpl();
     InvoiceItemsDAOImpl invoiceItemsDAO = new InvoiceItemsDAOImpl();
     List<Invoice> invoiceList = invoiceDAO.getAllInvoices();
-    List<InvoiceItems> invoiceItemsList = invoiceItemsDAO.getAllInvoiceItems();
+
 
 
     private int currentIndex;
@@ -53,12 +53,19 @@ public class InvoiceController implements Initializable {
 
     }
 
+    public void hidePrevious(){
+        pris.getChildren().clear();
+        type.getChildren().clear();
+        pbeskrivelse.getChildren().clear();
+    }
+
 
     public void insertInfoFromDb(Invoice invoices) {
 
         Customer customer = customerDAO.accessCustomer(invoices.getCustomer());
         Address address = addressDAO.accessAddress(invoices.getCustomer());
         Invoice invoice = invoiceDAO.accessInvoice(invoices.getCustomer());
+        List<InvoiceItems> invoiceItemsList = invoiceItemsDAO.getAllInvoiceItems(invoice.getInvoiceId());
 
 
         navnId.setText(customer.getCustomerName());
@@ -69,16 +76,16 @@ public class InvoiceController implements Initializable {
         telefonid.setText(customer.getPhoneNumber());
         billingid.setText(customer.getBillingAccount());
 
-        itemsDisplay();
+        itemsDisplay(invoiceItemsList);
 
 
     }
 
-    private void itemsDisplay() {
+    private void itemsDisplay(List<InvoiceItems> list) {
 
         float sumItems = 0;
 
-        for (InvoiceItems item : invoiceItemsList) {
+        for (InvoiceItems item : list) {
             Product product = productDAO.accessProduct(item.getProduct());
             Text itemName = new Text(product.getProductName());
             Text itemPrice = new Text(String.valueOf(product.getPrice()));
@@ -101,7 +108,9 @@ public class InvoiceController implements Initializable {
 
     public void onNext() {
         if (currentIndex == 0) {
+            hidePrevious();
             displayInvoice(currentIndex + 1);
+
         } else {
             displayInvoice(currentIndex++);
         }
@@ -109,16 +118,19 @@ public class InvoiceController implements Initializable {
 
 
     public void onBack() {
-
-        try {
-            AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));
-            Scene scene = new Scene(anchor);
-            Stage stage = (Stage) parent.getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (currentIndex != 0){
+            currentIndex -= 1;
+            displayInvoice(currentIndex);
+        }else {
+            try {
+                AnchorPane anchor = FXMLLoader.load(getClass().getResource("MainSceneFXML.fxml"));
+                Scene scene = new Scene(anchor);
+                Stage stage = (Stage) parent.getScene().getWindow();
+                stage.setScene(scene);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-
     }
 }
 

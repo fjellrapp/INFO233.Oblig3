@@ -26,7 +26,8 @@ public class InvoiceItemsDAOImpl {
         try {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL);
-            if (resultSet.next()) {
+
+            while (resultSet.next()) {
                 InvoiceItems invoiceItems = new InvoiceItems();
                 invoiceItems.setInvoice(resultSet.getInt("invoice"));
                 invoiceItems.setProduct(resultSet.getInt("product"));
@@ -50,7 +51,7 @@ public class InvoiceItemsDAOImpl {
         try {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL);
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 invoiceItems.setInvoice(resultSet.getInt("invoice"));
                 invoiceItems.setProduct(resultSet.getInt("product"));
             }

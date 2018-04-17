@@ -27,7 +27,7 @@ public class ProductDAOImpl {
         try {
             Statement statment = conn.createStatement();
             ResultSet resultSet = statment.executeQuery(SQL);
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 product.setProductId(resultSet.getInt("product_id"));
                 product.setProductName(resultSet.getString("product_name"));
                 product.setDescription(resultSet.getString("description"));

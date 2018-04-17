@@ -27,7 +27,7 @@ public class NewAddressController {
     private AddressDAOImpl addressDAO = new AddressDAOImpl();
 
     @FXML
-    public Address onCreate() {
+    public Address newAddress() {
         Address address = new Address();
         address.setPostalTown(postaltown.getText());
         address.setPostalCode(postalcode.getText());
@@ -35,6 +35,13 @@ public class NewAddressController {
         address.setAddressId(Integer.parseInt(addressid.getText()));
         address.setStreetNumber(streetno.getText());
         return address;
+    }
+
+    @FXML
+    public void onCreate() {
+        addressDAO.addAddress(newAddress());
+        systemText.setText("Address " + newAddress().getStreetName() + " was added.");
+
     }
 
     @FXML

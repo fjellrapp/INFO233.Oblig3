@@ -18,10 +18,10 @@
         <TextField fx:id="productid" layoutX="178.0" layoutY="147.0" promptText="Insert productID" />
         <Label layoutX="103.0" layoutY="109.0" text="Invoice (ID)" />
         <Label layoutX="99.0" layoutY="152.0" text="Product (ID)" />
-        <Button layoutX="178.0" layoutY="200.0" mnemonicParsing="false" onAction="#editInvoiceItems" text="Submit" />
-        <Button layoutX="316.0" layoutY="200.0" mnemonicParsing="false" onAction="#onDisplay" text="Display current data" />
-        <Button layoutX="483.0" layoutY="200.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
-        <TextArea fx:id="systemText" layoutX="-1.0" layoutY="260.0" prefHeight="140.0" prefWidth="607.0">
+        <Button layoutX="106.0" layoutY="200.0" mnemonicParsing="false" onAction="#editInvoiceItems" text="Submit" />
+        <Button layoutX="261.0" layoutY="200.0" mnemonicParsing="false" onAction="#onDisplay" text="Display current data" />
+        <Button layoutX="484.0" layoutY="200.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
+        <TextArea fx:id="systemText" layoutX="-1.0" layoutY="292.0" prefHeight="108.0" prefWidth="607.0">
         </TextArea>
     </children>
 </AnchorPane>

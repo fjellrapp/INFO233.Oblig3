@@ -23,6 +23,11 @@ public class EditCategoryController {
     @FXML
     private TextArea systemText;
 
+    /**
+     * Setter ID
+     * @param inheritedID
+     */
+
     public void setId(Integer inheritedID) {
         {
             categoryid.setText(Integer.toString(inheritedID));

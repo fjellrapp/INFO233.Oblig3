@@ -1,7 +1,9 @@
 package INFO233.Oblig3.GUI;
 
 import DAO.InvoiceItemsDAOImpl;
+import DAO.ProductDAOImpl;
 import Entities.InvoiceItems;
+import Entities.Product;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,7 +21,7 @@ import java.io.IOException;
 public class EditInvoiceItemsController {
 
     @FXML
-    private TextField id, productid;
+    private TextField id, productid, newProductid;
 
     @FXML
     private TextArea systemText;
@@ -28,6 +30,7 @@ public class EditInvoiceItemsController {
     private Parent parent;
 
     private InvoiceItemsDAOImpl invoiceItemsDAO = new InvoiceItemsDAOImpl();
+    private ProductDAOImpl productDAO = new ProductDAOImpl();
 
     public void setId(Integer inheritedID) {
         id.setText(Integer.toString(inheritedID));
@@ -39,6 +42,7 @@ public class EditInvoiceItemsController {
             invoiceItems.setProduct(Integer.parseInt(productid.getText()));
         }
         invoiceItemsDAO.editInvoiceItems(invoiceItems);
+
     }
 
 
@@ -46,10 +50,12 @@ public class EditInvoiceItemsController {
 
         try {
             InvoiceItems in = invoiceItemsDAO.accessInvoiceItems(Integer.parseInt(id.getText()));
+            Product product = productDAO.accessProduct(in.getProduct());
             systemText.setText(
                     "Currently registered data on this invoice: " + " \n" +
                             "Invoice ID: " + in.getInvoice() + " \n" +
-                            "Products: " + in.getProduct()
+                            "ProductID: " + in.getProduct() + " \n" +
+                            "Products: " + product.getProductName()
             );
 
         } catch (NumberFormatException e) {

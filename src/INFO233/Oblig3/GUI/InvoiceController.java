@@ -61,16 +61,15 @@ public class InvoiceController implements Initializable {
     public void insertInfoFromDb(Invoice invoices) {
 
         Customer customer = customerDAO.accessCustomer(invoices.getCustomer());
-        Address address = addressDAO.accessAddress(invoices.getCustomer());
-        Invoice invoice = invoiceDAO.accessInvoice(invoices.getCustomer());
+        Address address = addressDAO.accessAddress(customer.getAddress());
         List<InvoiceItems> invoiceItemsList = invoiceItemsDAO.getInvoiceItemsById(invoices.getInvoiceId());
 
 
         navnId.setText(customer.getCustomerName());
         addresseId.setText(address.getStreetName() + " " + address.getStreetNumber());
         postId.setText(address.getPostalCode() + " " + address.getPostalTown());
-        fakuturaid.setText(String.valueOf(invoice.getInvoiceId()));
-        datoid.setText(invoice.getDato());
+        fakuturaid.setText(String.valueOf(invoices.getInvoiceId()));
+        datoid.setText(invoices.getDato());
         telefonid.setText(customer.getPhoneNumber());
         billingid.setText(customer.getBillingAccount());
 
@@ -105,12 +104,9 @@ public class InvoiceController implements Initializable {
     }
 
     public void onNext() {
-        if (currentIndex == 0) {
+        if (currentIndex >= 0 && currentIndex < invoiceList.size() - 1) {
             hidePrevious();
             displayInvoice(currentIndex + 1);
-
-        } else {
-            displayInvoice(currentIndex++);
         }
     }
 

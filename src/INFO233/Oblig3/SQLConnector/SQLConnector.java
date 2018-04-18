@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class SQLConnectorFactory {
+public class SQLConnector {
 
     private static File schema = new File("oblig3v1_database.sql");
     private static Connection connection = null;

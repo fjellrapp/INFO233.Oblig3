@@ -1,7 +1,7 @@
 package DAO;
 
 import Entities.InvoiceItems;
-import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
+import INFO233.Oblig3.SQLConnector.SQLConnector;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class InvoiceItemsDAOImpl {
 
-    SQLConnectorFactory connector = new SQLConnectorFactory();
+    SQLConnector connector = new SQLConnector();
 
     /**
      * Returnerer alle gjenstander knyttet til en faktura.

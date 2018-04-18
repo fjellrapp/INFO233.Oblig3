@@ -1,7 +1,7 @@
 package DAO;
 
 import Entities.Address;
-import INFO233.Oblig3.SQLConnector.SQLConnectorFactory;
+import INFO233.Oblig3.SQLConnector.SQLConnector;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AddressDAOImpl {
 
-    private static SQLConnectorFactory connector = new SQLConnectorFactory();
+    private static SQLConnector connector = new SQLConnector();
 
 
     /**

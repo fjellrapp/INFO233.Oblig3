@@ -1,0 +1,21 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl360\sa240\partightenfactor0
+
+\f0\fs32 \cf2 \expnd0\expndtw0\kerning0
+\
+1. Jeg har valgte til slutt \'e5 bruke DAO(Data Access Objekt) m\'f8nsteret, selv om det ikke er et design m\'f8nster for seg selv (Selv om noen anser det som et J2EE design m\'f8nster). I utgangspunktet pr\'f8vde jeg meg bare frem uten noe spesielt m\'f8nster, men fant raskt ut at jeg trengte l\'f8sere kobling, og at DAO passet utmerket nettopp for \'e5 arbeide mot en database,  og h\'e5ndtere database-siden av oppgaven. Slik jeg har gjort det med GUI-biten ligner designm\'f8nsteret n\'e5 p\'e5 et MVC-m\'f8nster, med DAOene som Model, FXML som View og GUI-controllerne som Controller, p\'e5 en m\'e5te. \
+\
+2. DAOene h\'e5ndterer n\'e5 alt av kommunikasjon mot databasen,  og bruker entitetene  som representerer de forskjellige tabellene i databasen til \'e5 opprette enten nye rader, redigere rader, slette eller hente informasjon fra radene. GUI-kontrollerne kommuniserer med DAOene for \'e5 hente ut n\'f8dvendige objekter og informasjon. Kontrollerne kommuniserer med FXML-filene som presenterer informasjonen. \
+\
+3. Jeg har brukt dette m\'f8nsteret fordi, etter litt research, f\'f8ltes det ut som den mest naturlige og ryddige m\'e5ten \'e5 gj\'f8re det p\'e5. Jeg fikk ogs\'e5 med meg at det er m\'f8nsteret som blir brukt av bedrifsapplikasjoner for \'e5 f\'e5 tilgang til datakilder. Det f\'f8ltes derfor naturlig \'e5 g\'e5 frem slik. \
+\
+4. Det var et nyttig m\'f8nster i det at det gidde meg en god og ryddig m\'e5te \'e5 hente data fra databasen p\'e5, og videre presentere disse dataene p\'e5 i et GUI, og gir et lag mellom applikasjonens logikk og tilgangen til selve dataen i databasen. \
+\
+5. Jeg satt ofte med en f\'f8lelse at DAO ikke alltid var like fleksibel,  spesielt n\'e5r jeg arbeidet mot GUI-kontrollerne og oppretting av DAO objekter. Kanskje DAO-m\'f8nsteret kunne blitt litt mer fleksibelt om jeg ogs\'e5 hadde brukt et \'93Abstrakt Fabrikk\'94 m\'f8nster, eller \'93fabrikk m\'f8nster\'94, for \'e5 ogs\'e5 abstrahere bort objekt kreasjonen av DAOene (Om jeg har forst\'e5tt der rett/om det gir mening).
+\fs24 \
+}

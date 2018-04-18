@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="parent" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/9.0.4" fx:controller="GUI.EditCustomerController">
+    <children>
+        <Label layoutX="65.0" layoutY="14.0" text="Edit Customer">
+            <font>
+                <Font size="21.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="id" editable="false" layoutX="147.0" layoutY="52.0" opacity="0.45"/>
+        <TextField fx:id="name" layoutX="147.0" layoutY="90.0" promptText="Insert new name"/>
+        <TextField fx:id="address" layoutX="147.0" layoutY="126.0" promptText="Insert new addressID"/>
+        <TextField fx:id="phonenr" layoutX="147.0" layoutY="165.0" promptText="Insert new phonenr"/>
+        <TextField fx:id="account" layoutX="147.0" layoutY="200.0" opacity="0.84" promptText="Insert new accountno"/>
+        <Label layoutX="102.0" layoutY="57.0" text="ID"/>
+        <Label layoutX="90.0" layoutY="95.0" text="Name"/>
+        <Label layoutX="76.0" layoutY="131.0" text="Address"/>
+        <Label layoutX="76.0" layoutY="170.0" text="Phonenr"/>
+        <Label layoutX="77.0" layoutY="205.0" text="Account"/>
+        <Button layoutX="147.0" layoutY="235.0" mnemonicParsing="false" onAction="#editCustomer" text="Submit"/>
+        <Button layoutX="285.0" layoutY="235.0" mnemonicParsing="false" onAction="#displayCustomer"
+                text="Display current data"/>
+        <Button layoutX="496.0" layoutY="235.0" mnemonicParsing="false" onAction="#onBack" text="Back"/>
+        <TextArea fx:id="systemText" editable="false" layoutX="1.0" layoutY="269.0" prefHeight="131.0" prefWidth="600.0"
+                  wrapText="true"/>
+    </children>
+</AnchorPane>

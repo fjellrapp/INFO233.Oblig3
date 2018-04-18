@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="parent" prefHeight="255.0" prefWidth="504.0"
+            xmlns="http://javafx.com/javafx/9.0.4" fx:controller="GUI.EditCategoryPrestageController">
+    <children>
+        <Label layoutX="79.0" layoutY="48.0" text="Which category do you want to edit?">
+            <font>
+                <Font size="19.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="categoryid" layoutX="203.0" layoutY="108.0" promptText="Insert an ID"/>
+        <Label layoutX="120.0" layoutY="113.0" text="CategoryID"/>
+        <Button layoutX="120.0" layoutY="184.0" mnemonicParsing="false" onAction="#onBack" text="Back"/>
+        <Button layoutX="347.0" layoutY="184.0" mnemonicParsing="false" onAction="#onNext" text="Next"/>
+        <Text fx:id="alertid" fill="#ee0b0b" layoutX="203.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              wrappingWidth="167.00000131130219"/>
+    </children>
+</AnchorPane>
